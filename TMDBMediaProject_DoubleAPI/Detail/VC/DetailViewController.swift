@@ -11,6 +11,7 @@ class DetailViewController: UIViewController {
     
     var detailMovie: MovieResult?
     var detailMovieCast: MovieCast?
+    var detailMovieVideo: MovieVideo?
     
     @IBOutlet var detailMovieTitleLabel: UILabel!
     @IBOutlet var movieBackImage: UIImageView!
@@ -22,7 +23,6 @@ class DetailViewController: UIViewController {
     @IBOutlet var toggleBtn: NSLayoutConstraint!
     
     @IBOutlet var castTableView: UITableView!
-    
     @IBOutlet var videoCollectionView: UICollectionView!
     
     
@@ -32,8 +32,11 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         title = "영화 상세 정보"
         setup()
-        configureSetting()
+        configureTableSetting()
+        configureCollectionSetting()
         setupNetwork()
+        setupNetworkVideo()
+        settingCollectionViewLayout()
         
     }
     
@@ -41,10 +44,22 @@ class DetailViewController: UIViewController {
         guard let detailMovie else { return }
         NetworkManager.shared.callRequestCast(id: detailMovie.id) { response in
             self.detailMovieCast = response
-            print("detailMovieCast",self.detailMovieCast)
+            print("detailMovieCast",self.detailMovieCast!)
             self.castTableView.reloadData()
         }
     }
+    
+    
+    func setupNetworkVideo() {
+        guard let detailMovie else { return }
+        NetworkManager.shared.callRequestVideo(id: detailMovie.id) { response in
+            self.detailMovieVideo = response
+            print("detailMovieCast",self.detailMovieVideo!)
+            self.videoCollectionView.reloadData()
+        }
+    }
+    
+    
     
     @IBAction func toggleBtnClicked(_ sender: UIButton) {
         print("버튼이 눌렸음")
@@ -80,6 +95,42 @@ extension DetailViewController : UITableViewDataSource {
     }
 }
 
+extension DetailViewController : UICollectionViewDelegate {
+    // paging 하면 중앙 정렬하게 맞추기
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        guard let layout = self.videoCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
+        
+        let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
+        
+        let estimatedIndex = scrollView.contentOffset.x / cellWidthIncludingSpacing
+        let index: Int
+        if velocity.x > 0 {
+            index = Int(ceil(estimatedIndex))
+        } else if velocity.x < 0 {
+            index = Int(floor(estimatedIndex))
+        } else {
+            index = Int(round(estimatedIndex))
+        }
+        
+        targetContentOffset.pointee = CGPoint(x: CGFloat(index) * cellWidthIncludingSpacing, y: 0)
+    }
+}
+
+extension DetailViewController : UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard let detailMovieVideo else { return 0 }
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let detailMovieVideo else { return  UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VideoCollectionViewCell.identifier, for: indexPath) as? VideoCollectionViewCell else { return UICollectionViewCell() }
+        let item = detailMovieVideo.results[indexPath.item]
+        cell.thumbnailTitle.text = item.name
+        return cell
+    }
+}
+
 extension DetailViewController {
     
     func setup() {
@@ -101,11 +152,33 @@ extension DetailViewController {
         detailPosterImage.settingImageContendMode()
     }
     
-    func configureSetting() {
+    func configureTableSetting() {
         castTableView.dataSource = self
         castTableView.delegate = self
         castTableView.rowHeight = 120
         let nib = UINib(nibName: MovieCastTableViewCell.identifier, bundle: nil)
         castTableView.register(nib, forCellReuseIdentifier: MovieCastTableViewCell.identifier)
     }
+    
+    func configureCollectionSetting() {
+        videoCollectionView.dataSource = self
+        videoCollectionView.delegate = self
+        let nib = UINib(nibName: VideoCollectionViewCell.identifier, bundle: nil)
+        videoCollectionView.register(nib, forCellWithReuseIdentifier: VideoCollectionViewCell.identifier)
+        videoCollectionView.decelerationRate = .fast
+        videoCollectionView.isPagingEnabled = false
+        
+    }
+    
+    // paging 처리 하기위해서 spaing 값 없앴음
+    func settingCollectionViewLayout() {
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let width = UIScreen.main.bounds.width
+        layout.itemSize = CGSize(width: width, height: 300)
+        
+        videoCollectionView.collectionViewLayout = layout
+    }
 }
+

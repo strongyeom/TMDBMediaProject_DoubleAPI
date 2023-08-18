@@ -67,10 +67,32 @@ class NetworkManager {
                     print(error)
                 }
             }
+
     }
     
     
-    // 비디오 베이스 URL https://www.youtube.com/watch?v=
-    
+    // 비디오 베이스 URL https://www.youtube.com/watch?v=(key)
+    func callRequestVideo(id: Int, completionHandler: @escaping (MovieVideo?) -> Void) {
+       
+        var components = URLComponents(string: "https://api.themoviedb.org/3/movie/\(id)/videos?")!
+        let language = URLQueryItem(name: "language", value: "ko-KR")
+        components.queryItems = [language]
+        let url = components.url!
+        
+        let header: HTTPHeaders = [
+            "Authorization": APIKey.tmdbAccessToken,
+            "accept": "application/json"
+        ]
+        
+        AF.request(url, headers: header).validate(statusCode: 200...500)
+            .responseDecodable(of: MovieVideo.self) { response in
+                switch response.result {
+                case .success(let data):
+                    completionHandler(data)
+                case .failure(let error):
+                    print(error)
+                }
+            }
+    }
    
 }
