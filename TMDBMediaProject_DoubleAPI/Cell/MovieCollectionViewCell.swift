@@ -13,8 +13,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
     @IBOutlet var moviePoster: UIImageView!
     @IBOutlet var movieTitle: UILabel!
     
-    let baseImageurl: String = "https://image.tmdb.org/t/p/w440_and_h660_face"
-    
+ 
     override func awakeFromNib() {
         super.awakeFromNib()
         movieTitle.settingMoveTitle()
@@ -28,7 +27,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
     }
     
     func settingImageIndicator(url: String) {
-        let url = URL(string: baseImageurl + url)
+        let url = URL(string: Movie.baseImageurl + url)
         let processor = DownsamplingImageProcessor(size: moviePoster.bounds.size)
                      |> RoundCornerImageProcessor(cornerRadius: 20)
         moviePoster.kf.indicatorType = .activity

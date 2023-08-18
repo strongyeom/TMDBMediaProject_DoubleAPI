@@ -12,4 +12,9 @@ extension UILabel {
         self.font = UIFont.systemFont(ofSize: 12, weight: .heavy)
         self.textColor = .white
     }
+    
+    func settingDetailMovieTitle() {
+        self.font = UIFont.systemFont(ofSize: 20, weight: .heavy)
+        self.textColor = .white
+    }
 }

@@ -8,6 +8,9 @@ import Foundation
 
 // MARK: - Movie
 struct Movie: Codable {
+    
+    static let baseImageurl: String = "https://image.tmdb.org/t/p/w440_and_h660_face"
+    
     let page: Int
     var results: [MovieResult]
     let totalPages, totalResults: Int
