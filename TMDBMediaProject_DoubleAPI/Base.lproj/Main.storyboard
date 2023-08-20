@@ -72,7 +72,7 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="1107"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QI3-hO-yNa">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="1090.6666666666667"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="1070.6666666666667"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JuP-j1-TAX">
                                                 <rect key="frame" x="0.0" y="0.0" width="393" height="235.66666666666666"/>
@@ -121,10 +121,10 @@
                                                 </constraints>
                                             </tableView>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qNE-um-mAt">
-                                                <rect key="frame" x="0.0" y="770.66666666666663" width="393" height="299.99999999999989"/>
+                                                <rect key="frame" x="0.0" y="770.66666666666663" width="393" height="279.99999999999989"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="300" id="IrP-0H-2zE"/>
+                                                    <constraint firstAttribute="height" constant="280" id="IrP-0H-2zE"/>
                                                 </constraints>
                                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NZK-8M-m4c">
                                                     <size key="itemSize" width="128" height="128"/>

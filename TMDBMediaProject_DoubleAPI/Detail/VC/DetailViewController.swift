@@ -11,6 +11,7 @@
  */
 
 import UIKit
+import Kingfisher
 
 class DetailViewController: UIViewController {
     
@@ -48,8 +49,8 @@ class DetailViewController: UIViewController {
     
     func setupNetworkCast() {
         guard let detailMovie else { return }
-        NetworkManager.shared.callRequestCast(id: detailMovie.id) { response, videoResponse in
-            self.detailMovieCast = response
+        NetworkManager.shared.callRequestCast(id: detailMovie.id) { castResponse, videoResponse in
+            self.detailMovieCast = castResponse
             self.detailMovieVideo = videoResponse
             print("detailMovieCast",self.detailMovieCast!)
             self.castTableView.reloadData()
@@ -136,11 +137,16 @@ extension DetailViewController : UICollectionViewDataSource {
         return 5
     }
     
+    // 유툽 썸네일 : https://img.youtube.com/vi/qoaVM9WdfMI/maxresdefault.jpg
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let detailMovieVideo else { return  UICollectionViewCell() }
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VideoCollectionViewCell.identifier, for: indexPath) as? VideoCollectionViewCell else { return UICollectionViewCell() }
         let item = detailMovieVideo.results[indexPath.item]
-        cell.thumbnailTitle.text = item.name
+        let thumbnailUrl = "https://img.youtube.com/vi/"
+        let thumbnailSize = "/maxresdefault.jpg"
+        let url = URL(string: thumbnailUrl + item.key + thumbnailSize)!
+        cell.thumbnailImage.kf.setImage(with: url )
+       // cell.thumbnailTitle.text = item.name
         return cell
     }
 }

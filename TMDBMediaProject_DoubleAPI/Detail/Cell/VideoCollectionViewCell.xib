@@ -19,31 +19,35 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eAG-nT-cNJ">
                         <rect key="frame" x="0.0" y="0.0" width="170" height="189"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zb4-xM-IDf">
-                        <rect key="frame" x="20" y="20" width="130" height="149"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="efn-he-JAr">
+                        <rect key="frame" x="50.666666666666657" y="78.666666666666671" width="69" height="32"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" image="play.circle" catalog="system"/>
+                        <buttonConfiguration key="configuration" style="plain" title="button">
+                            <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
+                        </buttonConfiguration>
+                    </button>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
+                <constraint firstItem="efn-he-JAr" firstAttribute="centerX" secondItem="eAG-nT-cNJ" secondAttribute="centerX" id="1wb-Vv-jkn"/>
                 <constraint firstAttribute="bottom" secondItem="eAG-nT-cNJ" secondAttribute="bottom" id="2dZ-gG-eXA"/>
-                <constraint firstItem="Zb4-xM-IDf" firstAttribute="leading" secondItem="eAG-nT-cNJ" secondAttribute="leading" constant="20" id="3sO-fu-6bL"/>
-                <constraint firstItem="Zb4-xM-IDf" firstAttribute="top" secondItem="eAG-nT-cNJ" secondAttribute="top" constant="20" id="MdG-7k-tTz"/>
-                <constraint firstItem="Zb4-xM-IDf" firstAttribute="centerX" secondItem="eAG-nT-cNJ" secondAttribute="centerX" id="Nps-af-zgW"/>
-                <constraint firstItem="Zb4-xM-IDf" firstAttribute="centerY" secondItem="eAG-nT-cNJ" secondAttribute="centerY" id="YvF-0t-eRY"/>
                 <constraint firstAttribute="trailing" secondItem="eAG-nT-cNJ" secondAttribute="trailing" id="j0A-vS-cO4"/>
                 <constraint firstItem="eAG-nT-cNJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="qWr-k7-O3r"/>
+                <constraint firstItem="efn-he-JAr" firstAttribute="centerY" secondItem="eAG-nT-cNJ" secondAttribute="centerY" id="rFy-Ds-Nh7"/>
                 <constraint firstItem="eAG-nT-cNJ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="z8a-Tw-0pe"/>
             </constraints>
             <size key="customSize" width="170" height="189"/>
             <connections>
+                <outlet property="playBtn" destination="efn-he-JAr" id="LE1-d0-xbt"/>
                 <outlet property="thumbnailImage" destination="eAG-nT-cNJ" id="7qn-uq-ab9"/>
-                <outlet property="thumbnailTitle" destination="Zb4-xM-IDf" id="1nk-42-YPr"/>
             </connections>
             <point key="canvasLocation" x="221.37404580152671" y="37.676056338028168"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="play.circle" catalog="system" width="128" height="123"/>
+    </resources>
 </document>
