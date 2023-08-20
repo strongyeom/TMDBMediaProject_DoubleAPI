@@ -40,3 +40,9 @@ extension UITableViewCell: ReuseIdentifierProtocol {
         return String(describing: self)
     }
 }
+
+extension FooterVideoCollectionReusableView: ReuseIdentifierProtocol {
+    static var identifier: String {
+        return String(describing: self)
+    }
+}

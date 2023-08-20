@@ -134,20 +134,39 @@ extension DetailViewController : UICollectionViewDelegate {
 extension DetailViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let detailMovieVideo else { return 0 }
-        return 5
+        let previewCount = detailMovieVideo.results.count
+        
+        if previewCount < 4 {
+            return detailMovieVideo.results.count
+        } else {
+            return 5
+        }
+        
+        // return 5
     }
     
     // 유툽 썸네일 : https://img.youtube.com/vi/qoaVM9WdfMI/maxresdefault.jpg
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let detailMovieVideo else { return  UICollectionViewCell() }
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VideoCollectionViewCell.identifier, for: indexPath) as? VideoCollectionViewCell else { return UICollectionViewCell() }
-        let item = detailMovieVideo.results[indexPath.item]
-        let thumbnailUrl = "https://img.youtube.com/vi/"
-        let thumbnailSize = "/maxresdefault.jpg"
-        let url = URL(string: thumbnailUrl + item.key + thumbnailSize)!
-        cell.thumbnailImage.kf.setImage(with: url )
+        print("indexPath.item", indexPath.item)
+            let item = detailMovieVideo.results[indexPath.item]
+            let thumbnailUrl = "https://img.youtube.com/vi/"
+            let thumbnailSize = "/maxresdefault.jpg"
+            let url = URL(string: thumbnailUrl + item.key + thumbnailSize)!
+            cell.thumbnailImage.kf.setImage(with: url )
+   
        // cell.thumbnailTitle.text = item.name
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionFooter {
+            guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: FooterVideoCollectionReusableView.identifier, for: indexPath) as? FooterVideoCollectionReusableView else { return UICollectionReusableView() }
+            return footer
+        } else {
+            return UICollectionReusableView()
+        }
     }
 }
 
@@ -191,6 +210,9 @@ extension DetailViewController {
         videoCollectionView.decelerationRate = .fast
         videoCollectionView.isPagingEnabled = false
         
+        let headernib = UINib(nibName: FooterVideoCollectionReusableView.identifier, bundle: nil)
+        videoCollectionView.register(headernib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: FooterVideoCollectionReusableView.identifier)
+        
     }
     
     // paging 처리 하기위해서 spaing 값 없앴음
@@ -200,7 +222,7 @@ extension DetailViewController {
         layout.scrollDirection = .horizontal
         let width = UIScreen.main.bounds.width
         layout.itemSize = CGSize(width: width, height: 300)
-        
+        layout.footerReferenceSize = CGSize(width: 100, height: 50)
         videoCollectionView.collectionViewLayout = layout
     }
 }

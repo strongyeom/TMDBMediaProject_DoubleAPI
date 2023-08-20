@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26AC35262A91FD2A00CAC1AA /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 26AC35252A91FD2A00CAC1AA /* Kingfisher */; };
+		26AC35292A91FD3300CAC1AA /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 26AC35282A91FD3300CAC1AA /* Alamofire */; };
+		26AC35342A91FF5900CAC1AA /* FooterVideoCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AC35322A91FF5900CAC1AA /* FooterVideoCollectionReusableView.swift */; };
+		26AC35352A91FF5900CAC1AA /* FooterVideoCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26AC35332A91FF5900CAC1AA /* FooterVideoCollectionReusableView.xib */; };
 		26E4707A2A8F45BF0076299E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E470792A8F45BF0076299E /* AppDelegate.swift */; };
 		26E4707C2A8F45BF0076299E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E4707B2A8F45BF0076299E /* SceneDelegate.swift */; };
 		26E4707E2A8F45BF0076299E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E4707D2A8F45BF0076299E /* MainViewController.swift */; };
@@ -21,8 +25,6 @@
 		26E4709B2A8F4E090076299E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E4709A2A8F4E090076299E /* NetworkManager.swift */; };
 		26E4709E2A8F4E460076299E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 26E4709D2A8F4E460076299E /* .gitignore */; };
 		26E470A02A8F4E890076299E /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E4709F2A8F4E890076299E /* APIKey.swift */; };
-		26E470A32A8F4F340076299E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 26E470A22A8F4F340076299E /* Alamofire */; };
-		26E470A62A8F4F3D0076299E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 26E470A52A8F4F3D0076299E /* Kingfisher */; };
 		26E470A92A8F51800076299E /* ReuseIdentifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E470A82A8F51800076299E /* ReuseIdentifierProtocol.swift */; };
 		26E470AC2A8F5FAE0076299E /* Ext+UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E470AB2A8F5FAE0076299E /* Ext+UILabel.swift */; };
 		26E470AE2A8F602F0076299E /* Ext+UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E470AD2A8F602F0076299E /* Ext+UIImageView.swift */; };
@@ -36,6 +38,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		26AC35322A91FF5900CAC1AA /* FooterVideoCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterVideoCollectionReusableView.swift; sourceTree = "<group>"; };
+		26AC35332A91FF5900CAC1AA /* FooterVideoCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FooterVideoCollectionReusableView.xib; sourceTree = "<group>"; };
 		26E470762A8F45BF0076299E /* TMDBMediaProject_DoubleAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TMDBMediaProject_DoubleAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26E470792A8F45BF0076299E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26E4707B2A8F45BF0076299E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,8 +73,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26E470A62A8F4F3D0076299E /* Kingfisher in Frameworks */,
-				26E470A32A8F4F340076299E /* Alamofire in Frameworks */,
+				26AC35262A91FD2A00CAC1AA /* Kingfisher in Frameworks */,
+				26AC35292A91FD3300CAC1AA /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,6 +204,8 @@
 				26E470BC2A8F8AC60076299E /* MovieCastTableViewCell.xib */,
 				26E470C12A8FCCAC0076299E /* VideoCollectionViewCell.swift */,
 				26E470C22A8FCCAC0076299E /* VideoCollectionViewCell.xib */,
+				26AC35322A91FF5900CAC1AA /* FooterVideoCollectionReusableView.swift */,
+				26AC35332A91FF5900CAC1AA /* FooterVideoCollectionReusableView.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -238,8 +244,8 @@
 			);
 			name = TMDBMediaProject_DoubleAPI;
 			packageProductDependencies = (
-				26E470A22A8F4F340076299E /* Alamofire */,
-				26E470A52A8F4F3D0076299E /* Kingfisher */,
+				26AC35252A91FD2A00CAC1AA /* Kingfisher */,
+				26AC35282A91FD3300CAC1AA /* Alamofire */,
 			);
 			productName = TMDBMediaProject_DoubleAPI;
 			productReference = 26E470762A8F45BF0076299E /* TMDBMediaProject_DoubleAPI.app */;
@@ -270,8 +276,8 @@
 			);
 			mainGroup = 26E4706D2A8F45BF0076299E;
 			packageReferences = (
-				26E470A12A8F4F340076299E /* XCRemoteSwiftPackageReference "Alamofire" */,
-				26E470A42A8F4F3D0076299E /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				26AC35242A91FD2A00CAC1AA /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				26AC35272A91FD3300CAC1AA /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 26E470772A8F45BF0076299E /* Products */;
 			projectDirPath = "";
@@ -293,6 +299,7 @@
 				26E470832A8F45C20076299E /* Assets.xcassets in Resources */,
 				26E470812A8F45BF0076299E /* Main.storyboard in Resources */,
 				26E470BE2A8F8AC60076299E /* MovieCastTableViewCell.xib in Resources */,
+				26AC35352A91FF5900CAC1AA /* FooterVideoCollectionReusableView.xib in Resources */,
 				26E4709E2A8F4E460076299E /* .gitignore in Resources */,
 				26E470912A8F4A6D0076299E /* MovieCollectionViewCell.xib in Resources */,
 			);
@@ -315,6 +322,7 @@
 				26E470B02A8F698D0076299E /* DetailViewController.swift in Sources */,
 				26E470A02A8F4E890076299E /* APIKey.swift in Sources */,
 				26E470982A8F4CD00076299E /* Movie.swift in Sources */,
+				26AC35342A91FF5900CAC1AA /* FooterVideoCollectionReusableView.swift in Sources */,
 				26E4709B2A8F4E090076299E /* NetworkManager.swift in Sources */,
 				26E4707C2A8F45BF0076299E /* SceneDelegate.swift in Sources */,
 				26E470942A8F4AFF0076299E /* HeaderCollectionReusableView.swift in Sources */,
@@ -538,15 +546,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		26E470A12A8F4F340076299E /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-		26E470A42A8F4F3D0076299E /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+		26AC35242A91FD2A00CAC1AA /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
@@ -554,18 +554,26 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		26AC35272A91FD3300CAC1AA /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		26E470A22A8F4F340076299E /* Alamofire */ = {
+		26AC35252A91FD2A00CAC1AA /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 26E470A12A8F4F340076299E /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
-		26E470A52A8F4F3D0076299E /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 26E470A42A8F4F3D0076299E /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			package = 26AC35242A91FD2A00CAC1AA /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		26AC35282A91FD3300CAC1AA /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 26AC35272A91FD3300CAC1AA /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
