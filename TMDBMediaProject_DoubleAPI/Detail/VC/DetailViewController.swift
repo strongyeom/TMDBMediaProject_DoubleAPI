@@ -48,24 +48,26 @@ class DetailViewController: UIViewController {
     
     func setupNetworkCast() {
         guard let detailMovie else { return }
-        NetworkManager.shared.callRequestCast(id: detailMovie.id) { response in
+        NetworkManager.shared.callRequestCast(id: detailMovie.id) { response, videoResponse in
             self.detailMovieCast = response
+            self.detailMovieVideo = videoResponse
             print("detailMovieCast",self.detailMovieCast!)
-            self.setupNetworkVideo()
-        }
-    }
-    
-    
-    func setupNetworkVideo() {
-        guard let detailMovie else { return }
-        NetworkManager.shared.callRequestVideo(id: detailMovie.id) { response in
-            self.detailMovieVideo = response
-            print("detailMovieCast",self.detailMovieVideo!)
-            self.videoCollectionView.reloadData()
             self.castTableView.reloadData()
+            self.videoCollectionView.reloadData()
         }
     }
     
+    
+//    func setupNetworkVideo() {
+//        guard let detailMovie else { return }
+//        NetworkManager.shared.callRequestVideo(id: detailMovie.id) { response in
+//            self.detailMovieVideo = response
+//            print("detailMovieCast",self.detailMovieVideo!)
+//            self.videoCollectionView.reloadData()
+//            self.castTableView.reloadData()
+//        }
+//    }
+//
     
     
     @IBAction func toggleBtnClicked(_ sender: UIButton) {

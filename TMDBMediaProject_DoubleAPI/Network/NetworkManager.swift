@@ -43,7 +43,7 @@ class NetworkManager {
             }
     }
     
-    func callRequestCast(id: Int, completionHandler: @escaping (MovieCast?) -> Void) {
+    func callRequestCast(id: Int, completionHandler: @escaping (MovieCast?, MovieVideo?) -> Void) {
         var components = URLComponents(string: "https://api.themoviedb.org/3/movie/\(id)/credits?")!
         let language = URLQueryItem(name: "language", value: "ko-KR")
         components.queryItems = [language]
@@ -56,13 +56,28 @@ class NetworkManager {
             "accept": "application/json"
         ]
         
+        var videocomponents = URLComponents(string: "https://api.themoviedb.org/3/movie/\(id)/videos?")!
+        let videolanguage = URLQueryItem(name: "language", value: "ko-KR")
+        videocomponents.queryItems = [language]
+        let videourl = videocomponents.url!
+
         
+        // cast API통신
         AF.request(url, headers: header).validate(statusCode: 200...500)
             .responseDecodable(of: MovieCast.self) { response in
                 switch response.result {
                 case .success(let data):
-                  //  print("\(data)")
-                    completionHandler(data)
+                        print("\(data)")
+                    // video API 통신
+                    AF.request(videourl, headers:  header).validate(statusCode: 200...500)
+                        .responseDecodable(of: MovieVideo.self) { response in
+                            switch response.result {
+                            case .success(let videoData):
+                                completionHandler(data,videoData)
+                            case .failure(let error):
+                                print(error)
+                            }
+                        }
                 case .failure(let error):
                     print(error)
                 }
@@ -72,27 +87,27 @@ class NetworkManager {
     
     
     // 비디오 베이스 URL https://www.youtube.com/watch?v=(key)
-    func callRequestVideo(id: Int, completionHandler: @escaping (MovieVideo?) -> Void) {
-       
-        var components = URLComponents(string: "https://api.themoviedb.org/3/movie/\(id)/videos?")!
-        let language = URLQueryItem(name: "language", value: "ko-KR")
-        components.queryItems = [language]
-        let url = components.url!
-        
-        let header: HTTPHeaders = [
-            "Authorization": APIKey.tmdbAccessToken,
-            "accept": "application/json"
-        ]
-        
-        AF.request(url, headers: header).validate(statusCode: 200...500)
-            .responseDecodable(of: MovieVideo.self) { response in
-                switch response.result {
-                case .success(let data):
-                    completionHandler(data)
-                case .failure(let error):
-                    print(error)
-                }
-            }
-    }
+//    func callRequestVideo(id: Int, completionHandler: @escaping (MovieVideo?) -> Void) {
+//
+//        var components = URLComponents(string: "https://api.themoviedb.org/3/movie/\(id)/videos?")!
+//        let language = URLQueryItem(name: "language", value: "ko-KR")
+//        components.queryItems = [language]
+//        let url = components.url!
+//
+//        let header: HTTPHeaders = [
+//            "Authorization": APIKey.tmdbAccessToken,
+//            "accept": "application/json"
+//        ]
+//
+//        AF.request(url, headers: header).validate(statusCode: 200...500)
+//            .responseDecodable(of: MovieVideo.self) { response in
+//                switch response.result {
+//                case .success(let data):
+//                    completionHandler(data)
+//                case .failure(let error):
+//                    print(error)
+//                }
+//            }
+//    }
    
 }
