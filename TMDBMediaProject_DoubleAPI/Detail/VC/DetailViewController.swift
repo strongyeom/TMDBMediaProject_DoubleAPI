@@ -162,6 +162,15 @@ extension DetailViewController : UICollectionViewDataSource {
     
     @objc func playBtnClicked(_ sender: UIButton)  {
         print("플레이 버튼이 눌렸다 \(sender.tag)")
+        guard let detailMovieVideo else { return }
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        
+        guard let vc = sb.instantiateViewController(withIdentifier: WebViewController.identifier) as? WebViewController else { return }
+        let youtubeBaseUrl = "https://www.youtube.com/watch?v="
+        let selectedBtnKey = youtubeBaseUrl + detailMovieVideo.results[sender.tag].key
+        print("selectedBtnKey",selectedBtnKey)
+        vc.imageKey = selectedBtnKey
+        present(vc, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
