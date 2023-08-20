@@ -73,12 +73,16 @@ class DetailViewController: UIViewController {
     
     @IBAction func toggleBtnClicked(_ sender: UIButton) {
         print("버튼이 눌렸음")
+        
+        
         if numberOfLines == 1 {
             descriptionLabel.numberOfLines = 0
             numberOfLines = 0
+            sender.isSelected = true
         } else if numberOfLines == 0  {
             descriptionLabel.numberOfLines = 1
             numberOfLines = 1
+            sender.isSelected = false
         }
     }
 }
