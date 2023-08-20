@@ -34,6 +34,9 @@ class DetailViewController: UIViewController {
     
     
     var numberOfLines: Int = 1
+    let thumbnailUrl = "https://img.youtube.com/vi/"
+    let thumbnailSize = "/maxresdefault.jpg"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "영화 상세 정보"
@@ -155,8 +158,7 @@ extension DetailViewController : UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VideoCollectionViewCell.identifier, for: indexPath) as? VideoCollectionViewCell else { return UICollectionViewCell() }
         print("indexPath.item", indexPath.item)
             let item = detailMovieVideo.results[indexPath.item]
-            let thumbnailUrl = "https://img.youtube.com/vi/"
-            let thumbnailSize = "/maxresdefault.jpg"
+
         guard let url = URL(string: thumbnailUrl + item.key + thumbnailSize) else { return UICollectionViewCell() }
             cell.thumbnailImage.kf.setImage(with: url)
         cell.playBtn.tag = indexPath.item
@@ -192,7 +194,8 @@ extension DetailViewController : UICollectionViewDataSource {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         
         guard let vc = sb.instantiateViewController(withIdentifier: AllPreViewViewController.identifier) as? AllPreViewViewController else { return }
-        
+        guard let detailMovieVideo else { return }
+        vc.movieId = detailMovieVideo.id
        // let nav = UINavigationController(rootViewController: vc)
         
         navigationController?.pushViewController(vc, animated: true)

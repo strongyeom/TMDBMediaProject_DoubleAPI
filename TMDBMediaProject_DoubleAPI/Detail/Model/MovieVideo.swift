@@ -11,6 +11,7 @@ import Foundation
 struct MovieVideo: Codable {
     let id: Int
     let results: [Result]
+    
 }
 
 // MARK: - Result

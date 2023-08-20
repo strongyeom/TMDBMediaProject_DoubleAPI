@@ -241,20 +241,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="모든 프리뷰 테이블뷰로 띄우기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gaq-Er-G3k">
-                                <rect key="frame" x="94.333333333333329" y="415.66666666666669" width="204.33333333333337" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="jeC-gL-hgz">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gyt-4P-yaj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="gaq-Er-G3k" firstAttribute="centerY" secondItem="XWv-MC-4xr" secondAttribute="centerY" id="L0k-Tf-N0w"/>
-                            <constraint firstItem="gaq-Er-G3k" firstAttribute="centerX" secondItem="XWv-MC-4xr" secondAttribute="centerX" id="viU-xO-4eL"/>
+                            <constraint firstItem="jeC-gL-hgz" firstAttribute="top" secondItem="gyt-4P-yaj" secondAttribute="top" id="WqK-3Q-sUq"/>
+                            <constraint firstItem="gyt-4P-yaj" firstAttribute="bottom" secondItem="jeC-gL-hgz" secondAttribute="bottom" id="lpN-9I-Ty4"/>
+                            <constraint firstItem="jeC-gL-hgz" firstAttribute="leading" secondItem="gyt-4P-yaj" secondAttribute="leading" id="pLR-6i-W1j"/>
+                            <constraint firstItem="gyt-4P-yaj" firstAttribute="trailing" secondItem="jeC-gL-hgz" secondAttribute="trailing" id="reP-4G-x6f"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="jeC-gL-hgz" id="xgM-60-FdW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kjq-5f-Twd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
