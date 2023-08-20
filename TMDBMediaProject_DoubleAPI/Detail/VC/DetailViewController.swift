@@ -180,10 +180,22 @@ extension DetailViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionFooter {
             guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: FooterVideoCollectionReusableView.identifier, for: indexPath) as? FooterVideoCollectionReusableView else { return UICollectionReusableView() }
+            footer.addPreViewBtn.addTarget(self, action: #selector(addpreviewBtnClicked(_:)), for: .touchUpInside)
             return footer
         } else {
             return UICollectionReusableView()
         }
+    }
+    
+    @objc func addpreviewBtnClicked(_ sender: UIButton) {
+        print("예고편 더보기 버튼이 눌림")
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        
+        guard let vc = sb.instantiateViewController(withIdentifier: AllPreViewViewController.identifier) as? AllPreViewViewController else { return }
+        
+       // let nav = UINavigationController(rootViewController: vc)
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

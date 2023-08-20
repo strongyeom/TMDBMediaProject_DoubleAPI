@@ -12,6 +12,7 @@
 		26AC35342A91FF5900CAC1AA /* FooterVideoCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AC35322A91FF5900CAC1AA /* FooterVideoCollectionReusableView.swift */; };
 		26AC35352A91FF5900CAC1AA /* FooterVideoCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26AC35332A91FF5900CAC1AA /* FooterVideoCollectionReusableView.xib */; };
 		26AC353A2A921F2900CAC1AA /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AC35392A921F2900CAC1AA /* WebViewController.swift */; };
+		26AC353C2A922A3B00CAC1AA /* AllPreViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AC353B2A922A3B00CAC1AA /* AllPreViewViewController.swift */; };
 		26E4707A2A8F45BF0076299E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E470792A8F45BF0076299E /* AppDelegate.swift */; };
 		26E4707C2A8F45BF0076299E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E4707B2A8F45BF0076299E /* SceneDelegate.swift */; };
 		26E4707E2A8F45BF0076299E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E4707D2A8F45BF0076299E /* MainViewController.swift */; };
@@ -43,6 +44,7 @@
 		26AC35332A91FF5900CAC1AA /* FooterVideoCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FooterVideoCollectionReusableView.xib; sourceTree = "<group>"; };
 		26AC35372A921EF100CAC1AA /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		26AC35392A921F2900CAC1AA /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		26AC353B2A922A3B00CAC1AA /* AllPreViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPreViewViewController.swift; sourceTree = "<group>"; };
 		26E470762A8F45BF0076299E /* TMDBMediaProject_DoubleAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TMDBMediaProject_DoubleAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26E470792A8F45BF0076299E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26E4707B2A8F45BF0076299E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 			children = (
 				26E470AF2A8F698D0076299E /* DetailViewController.swift */,
 				26AC35392A921F2900CAC1AA /* WebViewController.swift */,
+				26AC353B2A922A3B00CAC1AA /* AllPreViewViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 			files = (
 				26E4707E2A8F45BF0076299E /* MainViewController.swift in Sources */,
 				26AC353A2A921F2900CAC1AA /* WebViewController.swift in Sources */,
+				26AC353C2A922A3B00CAC1AA /* AllPreViewViewController.swift in Sources */,
 				26E470C02A8FC8E60076299E /* MovieVideo.swift in Sources */,
 				26E470BD2A8F8AC60076299E /* MovieCastTableViewCell.swift in Sources */,
 				26E470B62A8F88A00076299E /* MovieCast.swift in Sources */,

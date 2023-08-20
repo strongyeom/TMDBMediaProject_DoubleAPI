@@ -216,6 +216,7 @@
                             <constraint firstItem="sNB-id-VxI" firstAttribute="top" secondItem="ayG-2z-REo" secondAttribute="top" id="h0y-ld-KkH"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="pv1-q9-6vM"/>
                     <size key="freeformSize" width="393" height="1200"/>
                     <connections>
                         <outlet property="castTableView" destination="SON-w7-rKg" id="DcF-2L-EK4"/>
@@ -230,7 +231,34 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hQr-f8-4zd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1832.824427480916" y="3.5211267605633805"/>
+            <point key="canvasLocation" x="2759.5419847328244" y="3.5211267605633805"/>
+        </scene>
+        <!--All Pre View View Controller-->
+        <scene sceneID="0oy-Sa-kgt">
+            <objects>
+                <viewController storyboardIdentifier="AllPreViewViewController" id="2g3-CO-JGb" customClass="AllPreViewViewController" customModule="TMDBMediaProject_DoubleAPI" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XWv-MC-4xr">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="모든 프리뷰 테이블뷰로 띄우기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gaq-Er-G3k">
+                                <rect key="frame" x="94.333333333333329" y="415.66666666666669" width="204.33333333333337" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="gyt-4P-yaj"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="gaq-Er-G3k" firstAttribute="centerY" secondItem="XWv-MC-4xr" secondAttribute="centerY" id="L0k-Tf-N0w"/>
+                            <constraint firstItem="gaq-Er-G3k" firstAttribute="centerX" secondItem="XWv-MC-4xr" secondAttribute="centerX" id="viU-xO-4eL"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kjq-5f-Twd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3814.5038167938928" y="341.54929577464793"/>
         </scene>
         <!--Web View Controller-->
         <scene sceneID="SWl-Rb-UWN">
@@ -264,7 +292,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TKZ-Lk-ObL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2677" y="45"/>
+            <point key="canvasLocation" x="3814.5038167938928" y="-368.3098591549296"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eA0-4X-bdb">
