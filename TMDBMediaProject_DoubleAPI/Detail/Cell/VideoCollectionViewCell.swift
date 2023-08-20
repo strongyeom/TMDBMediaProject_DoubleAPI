@@ -12,11 +12,9 @@ class VideoCollectionViewCell: UICollectionViewCell {
     @IBOutlet var thumbnailImage: UIImageView!
     
     @IBOutlet var playBtn: UIButton!
-    @IBOutlet var thumbnailTitle: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         thumbnailImage.settingImageContendMode()
         configureBtnImageSize()
     }
@@ -28,6 +26,12 @@ class VideoCollectionViewCell: UICollectionViewCell {
         playBtn.setImage(image, for: .normal)
         playBtn.tintColor = .white
         playBtn.layer.cornerRadius = 27.5
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        thumbnailImage.image = nil
+        
     }
     
     

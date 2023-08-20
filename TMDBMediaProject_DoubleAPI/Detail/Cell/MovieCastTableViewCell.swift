@@ -49,4 +49,10 @@ class MovieCastTableViewCell: UITableViewCell {
             ])
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        actorImage.image = nil
+        actorName.text = nil
+    }
+    
 }

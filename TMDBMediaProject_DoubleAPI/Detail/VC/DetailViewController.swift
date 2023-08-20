@@ -153,11 +153,15 @@ extension DetailViewController : UICollectionViewDataSource {
             let item = detailMovieVideo.results[indexPath.item]
             let thumbnailUrl = "https://img.youtube.com/vi/"
             let thumbnailSize = "/maxresdefault.jpg"
-            let url = URL(string: thumbnailUrl + item.key + thumbnailSize)!
-            cell.thumbnailImage.kf.setImage(with: url )
-   
-       // cell.thumbnailTitle.text = item.name
+        guard let url = URL(string: thumbnailUrl + item.key + thumbnailSize) else { return UICollectionViewCell() }
+            cell.thumbnailImage.kf.setImage(with: url)
+        cell.playBtn.tag = indexPath.item
+        cell.playBtn.addTarget(self, action: #selector(playBtnClicked(_:)), for: .touchUpInside)
         return cell
+    }
+    
+    @objc func playBtnClicked(_ sender: UIButton)  {
+        print("플레이 버튼이 눌렸다 \(sender.tag)")
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -197,7 +201,6 @@ extension DetailViewController {
         castTableView.dataSource = self
         castTableView.delegate = self
         castTableView.rowHeight = 120
-       // castTableView.isScrollEnabled = false
         let nib = UINib(nibName: MovieCastTableViewCell.identifier, bundle: nil)
         castTableView.register(nib, forCellReuseIdentifier: MovieCastTableViewCell.identifier)
     }
@@ -208,6 +211,7 @@ extension DetailViewController {
         let nib = UINib(nibName: VideoCollectionViewCell.identifier, bundle: nil)
         videoCollectionView.register(nib, forCellWithReuseIdentifier: VideoCollectionViewCell.identifier)
         videoCollectionView.decelerationRate = .fast
+        
         videoCollectionView.isPagingEnabled = false
         
         let headernib = UINib(nibName: FooterVideoCollectionReusableView.identifier, bundle: nil)
