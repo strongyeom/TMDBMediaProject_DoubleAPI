@@ -5,6 +5,11 @@
 //  Created by 염성필 on 2023/08/18.
 //
 
+
+/*
+ 1. 스크롤뷰에 있는 castTalbleview를 스크롤하면 top으로 자동으로 이동되면서 스크롤이 되지 않는 이유는?
+ */
+
 import UIKit
 
 class DetailViewController: UIViewController {
@@ -34,18 +39,19 @@ class DetailViewController: UIViewController {
         setup()
         configureTableSetting()
         configureCollectionSetting()
-        setupNetwork()
-        setupNetworkVideo()
         settingCollectionViewLayout()
+        setupNetworkCast()
+        
+        
         
     }
     
-    func setupNetwork() {
+    func setupNetworkCast() {
         guard let detailMovie else { return }
         NetworkManager.shared.callRequestCast(id: detailMovie.id) { response in
             self.detailMovieCast = response
             print("detailMovieCast",self.detailMovieCast!)
-            self.castTableView.reloadData()
+            self.setupNetworkVideo()
         }
     }
     
@@ -56,6 +62,7 @@ class DetailViewController: UIViewController {
             self.detailMovieVideo = response
             print("detailMovieCast",self.detailMovieVideo!)
             self.videoCollectionView.reloadData()
+            self.castTableView.reloadData()
         }
     }
     
@@ -73,8 +80,10 @@ class DetailViewController: UIViewController {
     }
 }
 
+
+// MARK: - TableView + Extension
 extension DetailViewController : UITableViewDelegate {
-    
+
 }
 
 extension DetailViewController : UITableViewDataSource {
@@ -93,8 +102,11 @@ extension DetailViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Cast"
     }
+    
 }
 
+
+// MARK: - Collectionview + Extension
 extension DetailViewController : UICollectionViewDelegate {
     // paging 하면 중앙 정렬하게 맞추기
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
@@ -131,6 +143,8 @@ extension DetailViewController : UICollectionViewDataSource {
     }
 }
 
+
+// MARK: - DetailViewController + Extension
 extension DetailViewController {
     
     func setup() {
@@ -156,6 +170,7 @@ extension DetailViewController {
         castTableView.dataSource = self
         castTableView.delegate = self
         castTableView.rowHeight = 120
+       // castTableView.isScrollEnabled = false
         let nib = UINib(nibName: MovieCastTableViewCell.identifier, bundle: nil)
         castTableView.register(nib, forCellReuseIdentifier: MovieCastTableViewCell.identifier)
     }
