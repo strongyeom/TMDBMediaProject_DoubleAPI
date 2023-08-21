@@ -5,11 +5,6 @@
 //  Created by 염성필 on 2023/08/18.
 //
 
-
-/*
- 1. 스크롤뷰에 있는 castTalbleview를 스크롤하면 top으로 자동으로 이동되면서 스크롤이 되지 않는 이유는?
- */
-
 import UIKit
 import Kingfisher
 
@@ -58,6 +53,7 @@ class DetailViewController: UIViewController {
             print("detailMovieCast",self.detailMovieCast!)
             self.castTableView.reloadData()
             self.videoCollectionView.reloadData()
+            self.castTableView.setContentOffset(.init(x: .zero, y: 200), animated: true)
         }
     }
     
@@ -76,7 +72,6 @@ class DetailViewController: UIViewController {
     
     @IBAction func toggleBtnClicked(_ sender: UIButton) {
         print("버튼이 눌렸음")
-        
         
         if numberOfLines == 1 {
             descriptionLabel.numberOfLines = 0
@@ -102,7 +97,7 @@ extension DetailViewController : UITableViewDataSource {
         return detailMovieCast.cast.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = castTableView.dequeueReusableCell(withIdentifier: MovieCastTableViewCell.identifier, for: indexPath) as? MovieCastTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieCastTableViewCell.identifier, for: indexPath) as? MovieCastTableViewCell else { return UITableViewCell() }
         guard let detailMovieCast else { return UITableViewCell() }
         let row = detailMovieCast.cast[indexPath.row]
         cell.configure(row: row)
@@ -111,6 +106,18 @@ extension DetailViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Cast"
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print(#function)
+        // 테이블 뷰의 contentOfset.y = contentViewHeight - scrollviewHeight 즉, 스크롤 한 거리
+        let yOffset = scrollView.contentOffset.y
+            print("yOffset", yOffset)
+                if yOffset > 0 {
+                    print("테이블 뷰 스크롤 진행됨")
+                    castTableView.setContentOffset(.init(x: .zero, y: yOffset), animated: true)
+                    
+                }
     }
     
 }

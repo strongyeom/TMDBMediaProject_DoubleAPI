@@ -111,7 +111,7 @@ extension MainViewController: CollectionViewAttributeProtocol {
     func settingCollectionViewLayout() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        let spacing: CGFloat = 10
+        let spacing: CGFloat = 5
         let width = UIScreen.main.bounds.width - (spacing * 4)
         layout.itemSize = CGSize(width: width / 3, height: width / 2.5)
         layout.minimumLineSpacing = spacing
