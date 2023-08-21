@@ -15,6 +15,8 @@ class DetailViewController: UIViewController {
     var detailMovieVideo: MovieVideo?
     
     @IBOutlet var detailMovieTitleLabel: UILabel!
+//    @IBOutlet var originalTitleLabel: UILabel!
+    
     @IBOutlet var movieBackImage: UIImageView!
     @IBOutlet var detailPosterImage: UIImageView!
     
@@ -35,15 +37,19 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "영화 상세 정보"
+        
         setup()
         configureTableSetting()
         configureCollectionSetting()
         settingCollectionViewLayout()
         setupNetworkCast()
-        
-        
-        
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("detailMovieTitleLabel",detailMovieTitleLabel)
+    }
+    
     
     func setupNetworkCast() {
         guard let detailMovie else { return }
@@ -53,7 +59,7 @@ class DetailViewController: UIViewController {
             print("detailMovieCast",self.detailMovieCast!)
             self.castTableView.reloadData()
             self.videoCollectionView.reloadData()
-            self.castTableView.setContentOffset(.init(x: .zero, y: 200), animated: true)
+           //  self.castTableView.setContentOffset(.init(x: .zero, y: 200), animated: true)
         }
     }
     
@@ -216,15 +222,18 @@ extension DetailViewController {
     func setup() {
         let backUrl = URL(string: Movie.baseImageurl + detailMovie!.backdropPath)!
         detailMovieTitleLabel.text = detailMovie?.title
+        
         detailMovieTitleLabel.settingDetailMovieTitle()
+
         
         movieBackImage.kf.setImage(with: backUrl)
         movieBackImage.settingImageContendMode()
         
+        // print("viewDidload - detailMovieTitleLabel.text",detailMovieTitleLabel.text!)
+       
         overviewLabel.text = "overview"
         overviewLabel.textColor = .lightGray
         overviewLabel.font = UIFont.systemFont(ofSize: 20)
-        
         descriptionLabel.text = detailMovie?.overview
          descriptionLabel.numberOfLines = numberOfLines
         let posterUrl = URL(string: Movie.baseImageurl + detailMovie!.posterPath)

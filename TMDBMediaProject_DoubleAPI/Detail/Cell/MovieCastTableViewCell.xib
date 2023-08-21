@@ -22,7 +22,7 @@
                             <constraint firstAttribute="width" constant="100" id="6vp-RX-2Ih"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9UD-g9-OmH">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9UD-g9-OmH">
                         <rect key="frame" x="130" y="80" width="288" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -30,9 +30,9 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="9UD-g9-OmH" secondAttribute="trailing" constant="20" id="9Jt-cM-vP0"/>
                     <constraint firstItem="9UD-g9-OmH" firstAttribute="centerY" secondItem="eQL-7k-Ovf" secondAttribute="centerY" id="9XY-vy-ZhF"/>
                     <constraint firstItem="eQL-7k-Ovf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="GlJ-EI-OjB"/>
+                    <constraint firstAttribute="trailing" secondItem="9UD-g9-OmH" secondAttribute="trailing" constant="20" id="SAs-fH-Ldn"/>
                     <constraint firstItem="9UD-g9-OmH" firstAttribute="leading" secondItem="eQL-7k-Ovf" secondAttribute="trailing" constant="20" id="SiS-O8-FOa"/>
                     <constraint firstAttribute="bottom" secondItem="eQL-7k-Ovf" secondAttribute="bottom" constant="10" id="h76-yM-4Ew"/>
                     <constraint firstItem="eQL-7k-Ovf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="wsv-0j-R9o"/>
