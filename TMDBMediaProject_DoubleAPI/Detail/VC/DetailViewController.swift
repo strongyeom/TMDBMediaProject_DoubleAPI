@@ -53,13 +53,15 @@ class DetailViewController: UIViewController {
     
     func setupNetworkCast() {
         guard let detailMovie else { return }
+        
         NetworkManager.shared.callRequestCast(id: detailMovie.id) { castResponse, videoResponse in
             self.detailMovieCast = castResponse
-            self.detailMovieVideo = videoResponse
-            print("detailMovieCast",self.detailMovieCast!)
-            self.castTableView.reloadData()
-            self.videoCollectionView.reloadData()
-           //  self.castTableView.setContentOffset(.init(x: .zero, y: 200), animated: true)
+                     self.detailMovieVideo = videoResponse
+                     print("detailMovieCast",self.detailMovieCast!)
+                     self.castTableView.reloadData()
+                     self.videoCollectionView.reloadData()
+        } failure: {
+            print("데이터 통신 받아오지 못했습니다.")
         }
     }
     

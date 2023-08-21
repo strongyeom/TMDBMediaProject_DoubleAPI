@@ -43,7 +43,7 @@ class NetworkManager {
             }
     }
     
-    func callRequestCast(id: Int, completionHandler: @escaping (MovieCast?, MovieVideo?) -> Void) {
+    func callRequestCast(id: Int, success: @escaping (MovieCast?, MovieVideo?) -> Void, failure: @escaping () -> Void) {
         
         var components = URLComponents(string: "https://api.themoviedb.org/3/movie/\(id)/credits?")!
         let language = URLQueryItem(name: "language", value: "ko-KR")
@@ -72,13 +72,15 @@ class NetworkManager {
                         .responseDecodable(of: MovieVideo.self) { response in
                             switch response.result {
                             case .success(let videoData):
-                                completionHandler(data,videoData)
+                                success(data,videoData)
                             case .failure(let error):
                                 print(error)
+                                failure()
                             }
                         }
                 case .failure(let error):
                     print(error)
+                    failure()
                 }
             }
 
