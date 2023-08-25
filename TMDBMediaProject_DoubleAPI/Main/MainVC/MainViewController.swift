@@ -16,7 +16,7 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        UserDefaults.standard.set(true, forKey: "isLanuched")
         configureSetting()
         settingCollectionViewLayout()
         setupNetwork(page: page)
@@ -89,7 +89,6 @@ extension MainViewController: UICollectionViewDataSource {
         guard let vc = sb.instantiateViewController(withIdentifier: DetailViewController.identifier) as? DetailViewController else { return }
         let movie = movieList.results[indexPath.item]
         vc.detailMovie = movie
-        
         navigationController?.pushViewController(vc, animated: true)
     }
 }

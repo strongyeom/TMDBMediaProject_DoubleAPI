@@ -13,10 +13,42 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(windowScene: windowScene)
+        
+       // UserDefaults.standard.set(false, forKey: "isLanuched")
+        
+        
+        let isLanuched = UserDefaults.standard.bool(forKey: "isLanuched")
+        
+        if isLanuched {
+            
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            
+            guard let vc = sb.instantiateViewController(withIdentifier: MainViewController.identifier) as? MainViewController else { return }
+            
+            // 네비게이션 타이틀을 사용하려면 UINavigationController를 사용해야한다.
+            let nav = UINavigationController(rootViewController: vc)
+            // 루트 뷰에 대한 지정해주기 : 시작화면을 셋팅해주자!
+            // window : 사용자가 직접적으로 보는 뷰!
+            window?.rootViewController = nav
+            
+            
+        } else {
+            
+            let vc = OnBoardingViewController()
+         
+            let nav = UINavigationController(rootViewController: vc)
+            nav.modalPresentationStyle = .fullScreen
+            window?.rootViewController = nav
+            
+        }
+        
+        window?.makeKeyAndVisible()
+        
+        
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
