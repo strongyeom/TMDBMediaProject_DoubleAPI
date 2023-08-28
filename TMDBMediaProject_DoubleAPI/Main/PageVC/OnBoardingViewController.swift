@@ -44,12 +44,14 @@ class ThirdVC: UIViewController {
     
     @objc func nextBtnClicked() {
         print("다음 버튼이 눌렸음")
-        let sb = UIStoryboard(name: "Main", bundle: nil)
+      //  let sb = UIStoryboard(name: "Main", bundle: nil)
         
-        guard let vc = sb.instantiateViewController(withIdentifier: MainViewController.identifier) as? MainViewController else { return }
-        
-       //let nav = UINavigationController(rootViewController: vc)
-        navigationController?.pushViewController(vc, animated: true)
+//        guard let vc = sb.instantiateViewController(withIdentifier: MainViewController.identifier) as? MainViewController else { return }
+       let vc = CodeMainViewController()
+       let nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: false)
+       // navigationController?.pushViewController(vc, animated: true)
         
        // present(vc, animated: true)
         
