@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MainCVCell : BaseCollectionViewCell {
     
@@ -20,18 +21,26 @@ class MainCVCell : BaseCollectionViewCell {
         return label
     }()
     
+    let indicator  = {
+        let indi = UIActivityIndicatorView()
+        indi.color = .red
+        indi.style = .large
+        return indi
+    }()
     
-    
+   
     override func configureView() {
         contentView.addSubview(imageView)
         imageView.addSubview(titleLabel)
+        contentView.addSubview(indicator)
         imageView.settingImageCorner()
         imageView.settingImageContendMode()
         titleLabel.settingMoveTitle()
+        indicator.startAnimating()
     }
     
     override func setConstraints() {
-        imageView.backgroundColor = .yellow
+       // imageView.backgroundColor = .yellow
         imageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
@@ -39,5 +48,25 @@ class MainCVCell : BaseCollectionViewCell {
             make.horizontalEdges.equalToSuperview().inset(10)
             make.bottom.equalToSuperview().inset(10)
         }
+        indicator.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+
+    }
+    
+    func confiure(item: MovieResult) {
+       // settingImageIndicator(url: item.posterPath)
+        self.titleLabel.text = item.title
+        
+        let url = URL(string: Movie.baseImageurl + item.posterPath)
+        imageView.kf.setImage(with: url) { _ in
+            self.indicator.stopAnimating()
+        }
+       
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+       imageView.image = nil
     }
 }

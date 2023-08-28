@@ -35,7 +35,7 @@ class NetworkManager {
             .responseDecodable(of: Movie.self) { response in
                 switch response.result {
                 case .success(let data):
-                  //  print("\(data)")
+                    // print("데이터 통신 완료 :,\(data)")
                     completionHandler(data)
                 case .failure(let error):
                     print(error)

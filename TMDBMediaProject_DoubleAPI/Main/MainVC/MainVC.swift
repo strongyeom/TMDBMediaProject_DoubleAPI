@@ -31,10 +31,12 @@ class MainVC: BaseView {
         return layout
     }
     
+
     
     override func configureView() {
         self.addSubview(headerView)
         self.addSubview(collectionView)
+ 
     }
     
     override func setConstraints() {
@@ -44,6 +46,7 @@ class MainVC: BaseView {
         headerView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+
     }
 
 }
