@@ -26,7 +26,10 @@ class MainViewController: UIViewController {
         NetworkManager.shared.callRequest(page: page) { response in
             guard let response else { return }
             self.movieList.results.append(contentsOf: response.results)
-            self.tmdbCollectionView.reloadData()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                self.tmdbCollectionView.reloadData()
+            }
+           
         }
     }
     

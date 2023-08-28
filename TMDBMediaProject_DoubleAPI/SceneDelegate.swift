@@ -27,10 +27,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
             let sb = UIStoryboard(name: "Main", bundle: nil)
             
-//            guard let vc = sb.instantiateViewController(withIdentifier: MainViewController.identifier) as? MainViewController else { return }
-//
-//
-            let vc = CodeMainViewController()
+           // guard let vc = sb.instantiateViewController(withIdentifier: MainViewController.identifier) as? MainViewController else { return }
+
+
+            //let vc = CodeMainViewController()
+            let vc = CodeAllPreViewController()
             
             // 네비게이션 타이틀을 사용하려면 UINavigationController를 사용해야한다.
             let nav = UINavigationController(rootViewController: vc)

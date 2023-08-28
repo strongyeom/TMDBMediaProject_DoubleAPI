@@ -47,7 +47,7 @@ class ThirdVC: UIViewController {
       //  let sb = UIStoryboard(name: "Main", bundle: nil)
         
 //        guard let vc = sb.instantiateViewController(withIdentifier: MainViewController.identifier) as? MainViewController else { return }
-       let vc = CodeMainViewController()
+       let vc = MainViewController()
        let nav = UINavigationController(rootViewController: vc)
         nav.modalPresentationStyle = .fullScreen
         present(nav, animated: false)

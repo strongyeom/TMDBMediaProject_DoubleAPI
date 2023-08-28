@@ -48,7 +48,7 @@ class CodeMainViewController: BaseViewController {
         
         mainVC.collectionView.dataSource = self
         mainVC.collectionView.delegate = self
-        mainVC.collectionView.prefetchDataSource = self
+        //mainVC.collectionView.prefetchDataSource = self
         setupNetwork(page: page)
     }
     
