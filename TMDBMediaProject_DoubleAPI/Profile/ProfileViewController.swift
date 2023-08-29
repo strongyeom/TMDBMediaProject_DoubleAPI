@@ -7,6 +7,13 @@
 
 import UIKit
 
+enum ProfileSettingElements: String {
+    case name = "이름"
+    case userName = "사용자 이름"
+    case profilePhoto = "프로필 사진"
+    case avata = "아바타"
+}
+
 class ProfileViewController: BaseViewController {
     
     let profileView = ProfileView()
@@ -24,11 +31,19 @@ class ProfileViewController: BaseViewController {
         profileView.downView.userTalbeView.delegate = self
         
         profileView.downView.userTalbeView.register(DownTableViewCell.self, forCellReuseIdentifier: String(describing: DownTableViewCell.self))
-    }
-    
-    override func setConstraints() {
+        navigationItem.backButtonTitle = ""
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(settingNotification), name: .selectedCell, object: nil)
+        
         
     }
+    
+    @objc func settingNotification(notification: NSNotification) {
+        if let name = notification.userInfo?["name"] as? String {
+            profileView.topView.profileUserName.text = name
+        }
+    }
+
 }
 
 extension ProfileViewController : UITableViewDelegate, UITableViewDataSource {
@@ -60,14 +75,29 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        let selectedCell = ProfileSettingElements(rawValue: profileElements[indexPath.item])
         
         
-        if indexPath.item == 0 {
+        switch selectedCell {
+        case .name:
             let vc = SettingViewController()
+            vc.profileSettingElements = selectedCell
             vc.completionHandler = { text in
+                print("안녕하세요")
                 self.profileView.topView.profileTitle.text = text
             }
-            present(vc, animated: true)
+            navigationController?.pushViewController(vc, animated: true)
+        case .userName:
+            let vc = SettingViewController()
+            vc.profileSettingElements = selectedCell
+                      
+            navigationController?.pushViewController(vc, animated: true)
+        case .profilePhoto:
+            print("123")
+        case .avata:
+            print("123")
+        default:
+            break
         }
     }
 

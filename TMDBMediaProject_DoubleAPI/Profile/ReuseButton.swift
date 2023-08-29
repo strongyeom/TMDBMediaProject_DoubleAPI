@@ -34,7 +34,7 @@ class ReuseButton : BaseView {
         
         button.snp.makeConstraints { make in
             make.top.equalTo(view.snp.bottom).offset(9)
-            make.bottom.equalTo(self.safeAreaLayoutGuide).offset(5)
+            make.bottom.equalTo(self.safeAreaLayoutGuide).inset(20)
             make.horizontalEdges.equalToSuperview().inset(10)
         }
     }
