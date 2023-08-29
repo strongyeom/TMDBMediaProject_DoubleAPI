@@ -15,8 +15,8 @@ class DownView : BaseView {
     override func configureView() {
         self.addSubview(userTalbeView)
         userTalbeView.backgroundColor = .clear
-        userTalbeView.isScrollEnabled = false
-        userTalbeView.rowHeight = 60
+        userTalbeView.showsVerticalScrollIndicator = false
+        userTalbeView.rowHeight = 45
     }
     
     override func setConstraints() {

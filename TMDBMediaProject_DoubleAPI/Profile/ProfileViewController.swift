@@ -20,6 +20,11 @@ class ProfileViewController: BaseViewController {
     
     let profileElements: [String] = ["이름", "사용자 이름", "프로필 사진", "아바타"]
     
+    
+    
+    
+    let picker = UIImagePickerController()
+    
     override func loadView() {
         self.view = profileView
     }
@@ -34,7 +39,16 @@ class ProfileViewController: BaseViewController {
         navigationItem.backButtonTitle = ""
         
         NotificationCenter.default.addObserver(self, selector: #selector(settingNotification), name: .selectedCell, object: nil)
+         getPhotoGallery()
         
+    }
+    
+    func getPhotoGallery() {
+        
+        guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else { return }
+        picker.delegate = self
+        
+        picker.sourceType = .photoLibrary
         
     }
     
@@ -93,6 +107,9 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource {
                       
             navigationController?.pushViewController(vc, animated: true)
         case .profilePhoto:
+            // 갤러리 띄우기
+            present(picker, animated: true)
+           
             print("123")
         case .avata:
             print("123")
@@ -101,4 +118,18 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource {
         }
     }
 
+}
+
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        print("취소 버튼이 눌렸습니다.")
+        dismiss(animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            self.profileView.topView.profileImage.image = image
+            dismiss(animated: true)
+        }
+    }
 }

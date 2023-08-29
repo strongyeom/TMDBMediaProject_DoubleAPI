@@ -19,16 +19,18 @@ class SettingView : BaseView {
     }
     
     override func setConstraints() {
-        
-        reuseButton.snp.makeConstraints { make in
-            make.horizontalEdges.bottom.equalToSuperview()
-            make.height.equalTo(80)
-        }
+   
         
         reuseTopView.snp.makeConstraints { make in
             make.top.horizontalEdges.equalToSuperview()
             make.bottom.equalTo(reuseButton.snp.top)
             
+        }
+        
+        
+        reuseButton.snp.makeConstraints { make in
+            make.horizontalEdges.bottom.equalToSuperview()
+            make.height.equalTo(self.safeAreaLayoutGuide).multipliedBy(0.1)
         }
     }
 }

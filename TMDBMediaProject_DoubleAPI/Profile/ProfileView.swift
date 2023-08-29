@@ -21,7 +21,7 @@ class ProfileView: BaseView {
         
         topView.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(10)
-            make.height.equalTo(200)
+            make.height.equalTo(self.safeAreaLayoutGuide).multipliedBy(0.3)
         }
         
         downView.snp.makeConstraints { make in

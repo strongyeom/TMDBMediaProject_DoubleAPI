@@ -27,12 +27,15 @@ class SettingViewController: BaseViewController {
         settingView.reuseButton.button.addTarget(self, action: #selector(saveBtnClicked), for: .touchUpInside)
         // navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(dismissBtnClicked))
         guard let value = profileSettingElements?.rawValue else { return }
+        
         switch value {
         case "이름":
             print("이름")
+            navigationItem.title = value
             settingView.reuseTopView.titleTextField.placeholder = "\(value) 입력하세요"
         case "사용자 이름":
             print("사용자 이름")
+            navigationItem.title = value
             settingView.reuseTopView.titleTextField.placeholder = "\(value) 입력하세요"
         case "프로필 사진":
             print("프로필 사진")

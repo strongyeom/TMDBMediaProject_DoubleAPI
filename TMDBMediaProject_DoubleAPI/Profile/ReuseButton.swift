@@ -15,7 +15,7 @@ class ReuseButton : BaseView {
         button.setTitle("저장", for: .normal)
         button.backgroundColor = .blue
         button.titleLabel?.font = .systemFont(ofSize: 15, weight: .medium)
-        button.layer.cornerRadius = 20
+        button.layer.cornerRadius = 12
         button.clipsToBounds = true
         return button
     }()
