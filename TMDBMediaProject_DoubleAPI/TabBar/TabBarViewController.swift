@@ -41,13 +41,3 @@ class TabBarController: UITabBarController {
         
     }
 }
-
-extension TabBarController {
-    func configureTabBar() {
-        self.tabBar.tintColor = .label
-        self.tabBar.layer.cornerRadius = 20
-        self.tabBar.layer.masksToBounds = true
-        self.tabBar.layer.borderColor = UIColor.lightGray.cgColor  //테두리 색
-        self.tabBar.layer.borderWidth = 0.4 //tabbar 테두리 굵기
-    }
-}

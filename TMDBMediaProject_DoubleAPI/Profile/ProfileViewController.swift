@@ -50,11 +50,25 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource {
         
         if indexPath.section == 0 {
             cell.userInputTextLabel.text = profileElements[indexPath.row]
+            
         } else {
             cell.userInputTextLabel.text = "일단 임시 방편"
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
+        
+        if indexPath.item == 0 {
+            let vc = SettingViewController()
+            vc.completionHandler = { text in
+                self.profileView.topView.profileTitle.text = text
+            }
+            present(vc, animated: true)
+        }
     }
 
 }
