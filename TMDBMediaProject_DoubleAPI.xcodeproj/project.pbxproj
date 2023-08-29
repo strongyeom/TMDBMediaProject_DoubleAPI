@@ -50,6 +50,12 @@
 		26E6BA912A9CB0F50076AF65 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E6BA902A9CB0F50076AF65 /* BaseTableViewCell.swift */; };
 		26E6BA932A9CB1400076AF65 /* AllpreTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E6BA922A9CB1400076AF65 /* AllpreTVCell.swift */; };
 		26E6BA952A9CB37E0076AF65 /* AllpreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E6BA942A9CB37E0076AF65 /* AllpreView.swift */; };
+		26EAC9352A9DD1D3009D4A4A /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EAC9342A9DD1D3009D4A4A /* TabBarViewController.swift */; };
+		26EAC9382A9DD6F9009D4A4A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EAC9372A9DD6F9009D4A4A /* ProfileViewController.swift */; };
+		26EAC93A2A9DD712009D4A4A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EAC9392A9DD712009D4A4A /* ProfileView.swift */; };
+		26EAC93D2A9DE454009D4A4A /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EAC93C2A9DE454009D4A4A /* TopView.swift */; };
+		26EAC93F2A9DE6F0009D4A4A /* DownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EAC93E2A9DE6F0009D4A4A /* DownTableViewCell.swift */; };
+		26EAC9412A9DE71D009D4A4A /* DownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EAC9402A9DE71D009D4A4A /* DownView.swift */; };
 		26EAD2872A9872F900D44890 /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EAD2862A9872F900D44890 /* OnBoardingViewController.swift */; };
 		26EAD28A2A98782B00D44890 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 26EAD2892A98782B00D44890 /* SnapKit */; };
 		26EAD28F2A987F8100D44890 /* Ext+TransitionGeneric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EAD28E2A987F8100D44890 /* Ext+TransitionGeneric.swift */; };
@@ -100,6 +106,12 @@
 		26E6BA902A9CB0F50076AF65 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		26E6BA922A9CB1400076AF65 /* AllpreTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllpreTVCell.swift; sourceTree = "<group>"; };
 		26E6BA942A9CB37E0076AF65 /* AllpreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllpreView.swift; sourceTree = "<group>"; };
+		26EAC9342A9DD1D3009D4A4A /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		26EAC9372A9DD6F9009D4A4A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		26EAC9392A9DD712009D4A4A /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		26EAC93C2A9DE454009D4A4A /* TopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
+		26EAC93E2A9DE6F0009D4A4A /* DownTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownTableViewCell.swift; sourceTree = "<group>"; };
+		26EAC9402A9DE71D009D4A4A /* DownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownView.swift; sourceTree = "<group>"; };
 		26EAD2862A9872F900D44890 /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
 		26EAD28E2A987F8100D44890 /* Ext+TransitionGeneric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+TransitionGeneric.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -166,11 +178,13 @@
 		26E470782A8F45BF0076299E /* TMDBMediaProject_DoubleAPI */ = {
 			isa = PBXGroup;
 			children = (
+				26EAC9332A9DD1B1009D4A4A /* TabBar */,
 				26E6BA7C2A9C70F70076AF65 /* Base */,
 				26E470792A8F45BF0076299E /* AppDelegate.swift */,
 				26E4707B2A8F45BF0076299E /* SceneDelegate.swift */,
 				26AC351E2A91D5FA00CAC1AA /* Main */,
 				26E470B12A8F87E20076299E /* Detail */,
+				26EAC9362A9DD6E7009D4A4A /* Profile */,
 				26E470AA2A8F5FA70076299E /* Ext */,
 				26E470A72A8F51660076299E /* Protocol */,
 				26E4709C2A8F4E240076299E /* APIKey */,
@@ -322,6 +336,34 @@
 			path = AllPreViewVC;
 			sourceTree = "<group>";
 		};
+		26EAC9332A9DD1B1009D4A4A /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				26EAC9342A9DD1D3009D4A4A /* TabBarViewController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		26EAC9362A9DD6E7009D4A4A /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				26EAC9372A9DD6F9009D4A4A /* ProfileViewController.swift */,
+				26EAC9392A9DD712009D4A4A /* ProfileView.swift */,
+				26EAC93B2A9DE443009D4A4A /* ProfileSeparatorArea */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		26EAC93B2A9DE443009D4A4A /* ProfileSeparatorArea */ = {
+			isa = PBXGroup;
+			children = (
+				26EAC93C2A9DE454009D4A4A /* TopView.swift */,
+				26EAC9402A9DE71D009D4A4A /* DownView.swift */,
+				26EAC93E2A9DE6F0009D4A4A /* DownTableViewCell.swift */,
+			);
+			path = ProfileSeparatorArea;
+			sourceTree = "<group>";
+		};
 		26EAD2852A9872DF00D44890 /* PageVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -420,6 +462,7 @@
 			files = (
 				26E4707E2A8F45BF0076299E /* MainViewController.swift in Sources */,
 				26E6BA842A9C72000076AF65 /* BaseView.swift in Sources */,
+				26EAC9412A9DE71D009D4A4A /* DownView.swift in Sources */,
 				26AC353A2A921F2900CAC1AA /* WebViewController.swift in Sources */,
 				26AC353C2A922A3B00CAC1AA /* AllPreViewViewController.swift in Sources */,
 				26E6BA952A9CB37E0076AF65 /* AllpreView.swift in Sources */,
@@ -430,6 +473,7 @@
 				26E6BA822A9C71EB0076AF65 /* MainVC.swift in Sources */,
 				26E470B62A8F88A00076299E /* MovieCast.swift in Sources */,
 				26E4707A2A8F45BF0076299E /* AppDelegate.swift in Sources */,
+				26EAC93D2A9DE454009D4A4A /* TopView.swift in Sources */,
 				26E470AC2A8F5FAE0076299E /* Ext+UILabel.swift in Sources */,
 				26E470C32A8FCCAC0076299E /* VideoCollectionViewCell.swift in Sources */,
 				26EAD2872A9872F900D44890 /* OnBoardingViewController.swift in Sources */,
@@ -444,13 +488,17 @@
 				26E6BA882A9C763C0076AF65 /* MainCVHeaderCell.swift in Sources */,
 				26E6BA932A9CB1400076AF65 /* AllpreTVCell.swift in Sources */,
 				26E470942A8F4AFF0076299E /* HeaderCollectionReusableView.swift in Sources */,
+				26EAC9352A9DD1D3009D4A4A /* TabBarViewController.swift in Sources */,
 				26E470AE2A8F602F0076299E /* Ext+UIImageView.swift in Sources */,
+				26EAC93A2A9DD712009D4A4A /* ProfileView.swift in Sources */,
 				26E470902A8F4A6D0076299E /* MovieCollectionViewCell.swift in Sources */,
 				26E6BA8A2A9C79390076AF65 /* CodeMainViewController.swift in Sources */,
 				26AC353F2A92302200CAC1AA /* PreViewTableViewCell.swift in Sources */,
 				26EAD28F2A987F8100D44890 /* Ext+TransitionGeneric.swift in Sources */,
+				26EAC9382A9DD6F9009D4A4A /* ProfileViewController.swift in Sources */,
 				26E470A92A8F51800076299E /* ReuseIdentifierProtocol.swift in Sources */,
 				26E6BA862A9C73EE0076AF65 /* MainCVCell.swift in Sources */,
+				26EAC93F2A9DE6F0009D4A4A /* DownTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

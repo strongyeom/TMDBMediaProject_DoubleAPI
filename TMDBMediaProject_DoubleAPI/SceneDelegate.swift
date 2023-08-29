@@ -31,14 +31,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
             //let vc = CodeMainViewController()
-            let vc = CodeAllPreViewController()
+            let vc = TabBarController()
             
             // 네비게이션 타이틀을 사용하려면 UINavigationController를 사용해야한다.
-            let nav = UINavigationController(rootViewController: vc)
             
             // 루트 뷰에 대한 지정해주기 : 시작화면을 셋팅해주자!
             // window : 사용자가 직접적으로 보는 뷰!
-            window?.rootViewController = nav
+            window?.rootViewController = vc
             
             
         } else {

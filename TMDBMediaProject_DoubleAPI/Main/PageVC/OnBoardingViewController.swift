@@ -18,7 +18,6 @@ class FirstVC: UIViewController {
 class SecondVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
     }
 }
 

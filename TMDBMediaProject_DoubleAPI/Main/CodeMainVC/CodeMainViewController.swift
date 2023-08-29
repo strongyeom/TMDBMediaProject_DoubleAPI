@@ -23,6 +23,7 @@ class CodeMainViewController: BaseViewController {
         super.viewDidLoad()
         print("여기가 제대로 타나요?")
         UserDefaults.standard.set(true, forKey: "isLanuched")
+        
     }
     
     func setupNetwork(page: Int) {
@@ -40,12 +41,6 @@ class CodeMainViewController: BaseViewController {
     
     override func configureView() {
         super.configureView()
-        
-        let appearance = UINavigationBarAppearance()
-        title = "여미의 상영관"
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        navigationController?.navigationBar.backgroundColor = .darkGray
-        
         mainVC.collectionView.dataSource = self
         mainVC.collectionView.delegate = self
         //mainVC.collectionView.prefetchDataSource = self

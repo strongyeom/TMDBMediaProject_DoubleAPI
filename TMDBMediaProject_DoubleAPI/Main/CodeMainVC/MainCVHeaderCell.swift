@@ -40,7 +40,6 @@ class MainCVHeaderCell : UICollectionReusableView {
     
     func configureView() {
         addSubview(stackView)
-        self.backgroundColor = .red
         label.backgroundColor = .green
         label1.backgroundColor = .systemMint
         label2.backgroundColor = .brown
