@@ -78,7 +78,7 @@ extension MainViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
-            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderCollectionReusableView.identifier, for: indexPath) as? HeaderCollectionReusableView else { return UICollectionReusableView() }
+            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: UICollectionViewCell.identifier, for: indexPath) as? HeaderCollectionReusableView else { return UICollectionReusableView() }
             header.configure()
             return header
         } else {
@@ -96,7 +96,7 @@ extension MainViewController: UICollectionViewDataSource {
     }
 }
 
-extension MainViewController: CollectionViewAttributeProtocol {
+extension MainViewController {
 
     func configureSetting() {
         tmdbCollectionView.delegate = self
@@ -106,8 +106,8 @@ extension MainViewController: CollectionViewAttributeProtocol {
         let nib = UINib(nibName: MovieCollectionViewCell.identifier, bundle: nil)
         tmdbCollectionView.register(nib, forCellWithReuseIdentifier: MovieCollectionViewCell.identifier)
 
-        let headerNib = UINib(nibName: HeaderCollectionReusableView.identifier, bundle: nil)
-        tmdbCollectionView.register(headerNib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCollectionReusableView.identifier)
+        let headerNib = UINib(nibName: UICollectionViewCell.identifier, bundle: nil)
+        tmdbCollectionView.register(headerNib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: UICollectionViewCell.identifier)
     }
     
     func settingCollectionViewLayout() {

@@ -6,43 +6,38 @@
 //
 
 import UIKit
+import SeSaCUIFramework
 
-protocol ReuseIdentifierProtocol {
-    static var identifier: String { get }
-}
-
-protocol CollectionViewAttributeProtocol {
-    func configureSetting()
-    func settingCollectionViewLayout()
-}
-
-extension UIViewController: ReuseIdentifierProtocol {
-    
-    static var identifier: String {
-        return String(describing: self)
-    }
-}
-
-extension UICollectionViewCell : ReuseIdentifierProtocol {
-    static var identifier: String {
-        return String(describing: self)
-    }
-}
-
-extension HeaderCollectionReusableView : ReuseIdentifierProtocol {
-    static var identifier: String {
-        return String(describing: self)
-    }
-}
-
-extension UITableViewCell: ReuseIdentifierProtocol {
-    static var identifier: String {
-        return String(describing: self)
-    }
-}
-
-extension FooterVideoCollectionReusableView: ReuseIdentifierProtocol {
-    static var identifier: String {
-        return String(describing: self)
-    }
-}
+//protocol ReuseIdentifierProtocol {
+//    static var identifier: String { get }
+//}
+//
+//protocol CollectionViewAttributeProtocol {
+//    func configureSetting()
+//    func settingCollectionViewLayout()
+//}
+//
+//extension UIViewController: ReuseIdentifierProtocol {
+//
+//    static var identifier: String {
+//        return String(describing: self)
+//    }
+//}
+//
+////extension UICollectionViewCell : ReuseIdentifierProtocol {
+////    static var identifier: String {
+////        return String(describing: self)
+////    }
+////}
+//
+//extension UICollectionReusableView : ReuseIdentifierProtocol {
+//    static var identifier: String {
+//        return String(describing: self)
+//    }
+//}
+//
+//extension UITableViewCell: ReuseIdentifierProtocol {
+//    static var identifier: String {
+//        return String(describing: self)
+//    }
+//}
