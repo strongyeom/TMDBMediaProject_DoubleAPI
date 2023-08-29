@@ -60,6 +60,7 @@
 		26EAC9452A9DF40D009D4A4A /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EAC9442A9DF40D009D4A4A /* SettingView.swift */; };
 		26EAC9472A9DF673009D4A4A /* ReuseTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EAC9462A9DF673009D4A4A /* ReuseTopView.swift */; };
 		26EAC9492A9DFA71009D4A4A /* ReuseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EAC9482A9DFA71009D4A4A /* ReuseButton.swift */; };
+		26EAC94E2A9E53EA009D4A4A /* Ext+ UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EAC94D2A9E53EA009D4A4A /* Ext+ UITextField.swift */; };
 		26EAD2872A9872F900D44890 /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EAD2862A9872F900D44890 /* OnBoardingViewController.swift */; };
 		26EAD28A2A98782B00D44890 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 26EAD2892A98782B00D44890 /* SnapKit */; };
 		26EAD28F2A987F8100D44890 /* Ext+TransitionGeneric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EAD28E2A987F8100D44890 /* Ext+TransitionGeneric.swift */; };
@@ -120,6 +121,7 @@
 		26EAC9442A9DF40D009D4A4A /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		26EAC9462A9DF673009D4A4A /* ReuseTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseTopView.swift; sourceTree = "<group>"; };
 		26EAC9482A9DFA71009D4A4A /* ReuseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseButton.swift; sourceTree = "<group>"; };
+		26EAC94D2A9E53EA009D4A4A /* Ext+ UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+ UITextField.swift"; sourceTree = "<group>"; };
 		26EAD2862A9872F900D44890 /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
 		26EAD28E2A987F8100D44890 /* Ext+TransitionGeneric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+TransitionGeneric.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -255,6 +257,7 @@
 				26E470AB2A8F5FAE0076299E /* Ext+UILabel.swift */,
 				26E470AD2A8F602F0076299E /* Ext+UIImageView.swift */,
 				26EAD28E2A987F8100D44890 /* Ext+TransitionGeneric.swift */,
+				26EAC94D2A9E53EA009D4A4A /* Ext+ UITextField.swift */,
 			);
 			path = Ext;
 			sourceTree = "<group>";
@@ -512,6 +515,7 @@
 				26EAD28F2A987F8100D44890 /* Ext+TransitionGeneric.swift in Sources */,
 				26EAC9432A9DF3F2009D4A4A /* SettingViewController.swift in Sources */,
 				26EAC9382A9DD6F9009D4A4A /* ProfileViewController.swift in Sources */,
+				26EAC94E2A9E53EA009D4A4A /* Ext+ UITextField.swift in Sources */,
 				26E470A92A8F51800076299E /* ReuseIdentifierProtocol.swift in Sources */,
 				26E6BA862A9C73EE0076AF65 /* MainCVCell.swift in Sources */,
 				26EAC93F2A9DE6F0009D4A4A /* DownTableViewCell.swift in Sources */,

@@ -12,10 +12,14 @@ extension NSNotification.Name {
 }
 class SettingViewController: BaseViewController {
     
-    let settingView = SettingView()
+    private let settingView = SettingView()
+    
+    // delegate로 값 전달
+    var delegate: SettingNameProtocol?
     
     var profileSettingElements: ProfileSettingElements?
     
+    // 클로저로 값 전달
     var completionHandler: ((String) -> Void)?
     
     override func loadView() {
@@ -55,11 +59,15 @@ class SettingViewController: BaseViewController {
     @objc func saveBtnClicked() {
         print("SettingViewController - saveBtnClicked")
         
-        if profileSettingElements?.rawValue == "이름" {
-            completionHandler?(settingView.reuseTopView.titleTextField.text!)
-        } else {
+        if profileSettingElements?.rawValue != "이름" {
             NotificationCenter.default.post(name: .selectedCell, object: nil, userInfo: ["name":settingView.reuseTopView.titleTextField.text!])
+            
+        } else {
+           // completionHandler?(settingView.reuseTopView.titleTextField.text!)
+            delegate?.reciveName(text: settingView.reuseTopView.titleTextField.text!)
         }
+        
+        
         navigationController?.popViewController(animated: true)
         
        

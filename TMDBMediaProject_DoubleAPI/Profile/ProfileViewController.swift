@@ -7,23 +7,27 @@
 
 import UIKit
 
+protocol SettingNameProtocol {
+    func reciveName(text: String)
+}
+
 enum ProfileSettingElements: String {
     case name = "이름"
     case userName = "사용자 이름"
     case profilePhoto = "프로필 사진"
     case avata = "아바타"
+
 }
 
-class ProfileViewController: BaseViewController {
+ class ProfileViewController: BaseViewController {
     
-    let profileView = ProfileView()
+    private let profileView = ProfileView()
     
-    let profileElements: [String] = ["이름", "사용자 이름", "프로필 사진", "아바타"]
+    private let profileElements: [String] = ["이름", "사용자 이름", "프로필 사진", "아바타"]
     
+     var settingUserName: String?
     
-    
-    
-    let picker = UIImagePickerController()
+     private let picker = UIImagePickerController()
     
     override func loadView() {
         self.view = profileView
@@ -55,6 +59,8 @@ class ProfileViewController: BaseViewController {
     @objc func settingNotification(notification: NSNotification) {
         if let name = notification.userInfo?["name"] as? String {
             profileView.topView.profileUserName.text = name
+            settingUserName = name
+            profileView.downView.userTalbeView.reloadData()
         }
     }
 
@@ -81,7 +87,8 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource {
             cell.userInputTextLabel.text = profileElements[indexPath.row]
             
         } else {
-            cell.userInputTextLabel.text = "일단 임시 방편"
+            
+            cell.userInputTextLabel.text = settingUserName ?? "임시 방편"
         }
         
         return cell
@@ -91,31 +98,36 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource {
         
         let selectedCell = ProfileSettingElements(rawValue: profileElements[indexPath.item])
         
-        
-        switch selectedCell {
-        case .name:
-            let vc = SettingViewController()
-            vc.profileSettingElements = selectedCell
-            vc.completionHandler = { text in
-                print("안녕하세요")
-                self.profileView.topView.profileTitle.text = text
+        if indexPath.section == 0 {
+            switch selectedCell {
+            case .name:
+                let vc = SettingViewController()
+                vc.profileSettingElements = selectedCell
+                vc.delegate = self
+//                vc.completionHandler = { text in
+//                    print("안녕하세요")
+//                    self.profileView.topView.profileTitle.text = text
+//                }
+                navigationController?.pushViewController(vc, animated: true)
+            case .userName:
+                let vc = SettingViewController()
+                vc.profileSettingElements = selectedCell
+                          
+                navigationController?.pushViewController(vc, animated: true)
+            case .profilePhoto:
+                // 갤러리 띄우기
+                present(picker, animated: true)
+               
+                print("123")
+            case .avata:
+                print("123")
+            default:
+                break
             }
-            navigationController?.pushViewController(vc, animated: true)
-        case .userName:
-            let vc = SettingViewController()
-            vc.profileSettingElements = selectedCell
-                      
-            navigationController?.pushViewController(vc, animated: true)
-        case .profilePhoto:
-            // 갤러리 띄우기
-            present(picker, animated: true)
-           
-            print("123")
-        case .avata:
-            print("123")
-        default:
-            break
+        } else {
+            
         }
+        
     }
 
 }
@@ -131,5 +143,11 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
             self.profileView.topView.profileImage.image = image
             dismiss(animated: true)
         }
+    }
+}
+
+extension ProfileViewController : SettingNameProtocol {
+    func reciveName(text: String) {
+        self.profileView.topView.profileTitle.text = text
     }
 }
