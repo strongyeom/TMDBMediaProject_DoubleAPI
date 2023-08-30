@@ -7,9 +7,7 @@
 
 import UIKit
 
-extension NSNotification.Name {
-    static let selectedCell = NSNotification.Name("SelectedCell")
-}
+
 class SettingViewController: BaseViewController {
     
     private let settingView = SettingView()

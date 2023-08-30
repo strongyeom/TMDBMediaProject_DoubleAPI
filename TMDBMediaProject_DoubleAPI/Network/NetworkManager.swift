@@ -13,6 +13,24 @@ class NetworkManager {
     
     private init() { }
     
+    
+    
+    func callRequstUnsplash(searchText: String, page: Int, completionHandler: @escaping (Unsplash?) -> Void) {
+        
+        let url = URL(string: "https://api.unsplash.com/search/photos?query=\(searchText)&page=\(page)&per_page=20&client_id=\(APIKey.unsplashKey)")!
+        
+        AF.request(url, method: .get).validate()
+            .responseDecodable(of: Unsplash.self) { response in
+                switch response.result {
+                case .success(let data):
+                    print("성공")
+                    completionHandler(data)
+                case .failure(let error):
+                    print(error)
+                }
+            }
+    }
+    
     func callRequest(page:Int, completionHandler: @escaping (Movie?) -> Void) {
         
        // let url = "https://api.themoviedb.org/3/trending/movie/week?language=ko-KR"

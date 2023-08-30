@@ -27,11 +27,12 @@ class TabBarController: UITabBarController {
         let mainVCHome = UINavigationController(rootViewController: mainVC)
         let profileVCHome = UINavigationController(rootViewController: profileVC)
         
+
         
         self.tabBar.tintColor = UIColor.white // tab bar icon tint color
         self.tabBar.isTranslucent = false
         UITabBar.appearance().barTintColor = UIColor.blue
-        setViewControllers([mainVCHome, profileVCHome], animated: false)
+        setViewControllers([profileVCHome, mainVCHome], animated: false)
         
     }
 }

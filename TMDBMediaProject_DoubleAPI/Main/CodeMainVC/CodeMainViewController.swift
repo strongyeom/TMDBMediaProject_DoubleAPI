@@ -21,9 +21,7 @@ class CodeMainViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("여기가 제대로 타나요?")
-        UserDefaults.standard.set(true, forKey: "isLanuched")
-        
+       
     }
     
     func setupNetwork(page: Int) {
@@ -41,10 +39,27 @@ class CodeMainViewController: BaseViewController {
     
     override func configureView() {
         super.configureView()
+        print("여기가 제대로 타나요?")
+        UserDefaults.standard.set(true, forKey: "isLanuched")
+        
+        settup()
+        setupNetwork(page: page)
+        settingNavigationBar()
+    }
+    
+    func settingNavigationBar() {
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = .yellow
+        // 네비게이션 분리도 주기 ( isTranslucent : 투명도 )
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+    }
+    
+    func settup() {
         mainVC.collectionView.dataSource = self
         mainVC.collectionView.delegate = self
         //mainVC.collectionView.prefetchDataSource = self
-        setupNetwork(page: page)
     }
     
 }

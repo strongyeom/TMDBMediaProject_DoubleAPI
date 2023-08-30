@@ -41,3 +41,7 @@ import SeSaCUIFramework
 //        return String(describing: self)
 //    }
 //}
+
+protocol SelectedImage: AnyObject {
+    func receiveImage(url: URL)
+}

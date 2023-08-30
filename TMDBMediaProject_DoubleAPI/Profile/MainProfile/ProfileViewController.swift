@@ -35,17 +35,71 @@ enum ProfileSettingElements: String {
 
     override func configureView() {
         super.configureView()
-        profileView.backgroundColor = .systemMint
-        profileView.downView.userTalbeView.dataSource = self
-        profileView.downView.userTalbeView.delegate = self
-        
-        profileView.downView.userTalbeView.register(DownTableViewCell.self, forCellReuseIdentifier: String(describing: DownTableViewCell.self))
-        navigationItem.backButtonTitle = ""
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(settingNotification), name: .selectedCell, object: nil)
-         getPhotoGallery()
-        
+        settup()
+        settupNavigationBar()
+        settupNotificationCenter()
+     
     }
+     
+     func settupNotificationCenter() {
+         NotificationCenter.default.addObserver(self, selector: #selector(settingNotification), name: .selectedCell, object: nil)
+          getPhotoGallery()
+         
+         NotificationCenter.default.addObserver(self, selector: #selector(settingImageNotification(notification: )), name: .selectedImage, object: nil)
+     }
+     
+     @objc func settingImageNotification(notification: NSNotification) {
+         if let url = notification.userInfo?["url"] as? URL {
+             self.profileView.topView.profileImage.kf.setImage(with: url)
+         }
+     }
+     
+     
+     func settupNavigationBar() {
+         navigationItem.backButtonTitle = ""
+         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Search", style: .plain, target: self, action: #selector(searchBtnClicked(_:)))
+         
+         let appearance = UINavigationBarAppearance()
+         appearance.backgroundColor = .orange
+         navigationController?.navigationBar.standardAppearance = appearance
+         navigationController?.navigationBar.scrollEdgeAppearance = appearance
+     }
+     
+     
+     
+     @objc func searchBtnClicked(_ sender: UIBarButtonItem) {
+         print("Search 버튼 눌림")
+         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+         let gallery = UIAlertAction(title: "갤러리에서 가져오기", style: .default) { _ in
+             print("갤러리 버튼 눌림")
+             // 갤러리에서 가져오기
+             self.present(self.picker, animated: true)
+         }
+         let webImage = UIAlertAction(title: "웹에서 가져오기", style: .default) { _ in
+             print("웹 버튼 눌림")
+             let vc = SearchViewController()
+//             vc.completionHandler = { url in
+//                 self.profileView.topView.profileImage.kf.setImage(with: url)
+//             }
+             
+           //  vc.delegate = self
+             self.present(vc, animated: true)
+         }
+         let cancel = UIAlertAction(title: "취소", style: .cancel)
+         
+         actionSheet.addAction(gallery)
+         actionSheet.addAction(webImage)
+         actionSheet.addAction(cancel)
+         present(actionSheet, animated: true)
+     }
+     
+     func settup() {
+         profileView.backgroundColor = .systemMint
+         profileView.downView.userTalbeView.dataSource = self
+         profileView.downView.userTalbeView.delegate = self
+         
+         profileView.downView.userTalbeView.register(DownTableViewCell.self, forCellReuseIdentifier: String(describing: DownTableViewCell.self))
+     }
     
     func getPhotoGallery() {
         
@@ -60,6 +114,7 @@ enum ProfileSettingElements: String {
         if let name = notification.userInfo?["name"] as? String {
             profileView.topView.profileUserName.text = name
             settingUserName = name
+            // 두번째 섹션의 타이틀을 바꾸기 위함
             profileView.downView.userTalbeView.reloadData()
         }
     }
@@ -151,3 +206,9 @@ extension ProfileViewController : SettingNameProtocol {
         self.profileView.topView.profileTitle.text = text
     }
 }
+
+//extension ProfileViewController : SelectedImage {
+//    func receiveImage(url: URL) {
+//        self.profileView.topView.profileImage.kf.setImage(with: url)
+//    }
+//}
