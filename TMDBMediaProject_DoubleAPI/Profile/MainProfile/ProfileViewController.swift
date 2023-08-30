@@ -42,10 +42,18 @@ enum ProfileSettingElements: String {
     }
      
      func settupNotificationCenter() {
-         NotificationCenter.default.addObserver(self, selector: #selector(settingNotification), name: .selectedCell, object: nil)
+         NotificationCenter.default.addObserver(self, selector: #selector(settingNotification(notification:)), name: .selectedCell, object: nil)
           getPhotoGallery()
          
          NotificationCenter.default.addObserver(self, selector: #selector(settingImageNotification(notification: )), name: .selectedImage, object: nil)
+     }
+     
+     @objc func settingNotification(notification: NSNotification) {
+         if let text = notification.userInfo?["name"] as? String {
+             self.profileView.topView.profileUserName.text = text
+             settingUserName = text
+             self.profileView.downView.userTalbeView.reloadData()
+         }
      }
      
      @objc func settingImageNotification(notification: NSNotification) {
@@ -110,14 +118,7 @@ enum ProfileSettingElements: String {
         
     }
     
-    @objc func settingNotification(notification: NSNotification) {
-        if let name = notification.userInfo?["name"] as? String {
-            profileView.topView.profileUserName.text = name
-            settingUserName = name
-            // 두번째 섹션의 타이틀을 바꾸기 위함
-            profileView.downView.userTalbeView.reloadData()
-        }
-    }
+
 
 }
 
