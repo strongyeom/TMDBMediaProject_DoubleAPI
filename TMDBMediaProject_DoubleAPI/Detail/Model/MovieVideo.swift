@@ -10,11 +10,11 @@ import Foundation
 // MARK: - MovieVideo
 struct MovieVideo: Codable {
     let id: Int
-    let results: [Result]
+    let results: [MovieFristResult]
     
 }
 
 // MARK: - Result
-struct Result: Codable {
+struct MovieFristResult: Codable {
     let name, key: String
 }

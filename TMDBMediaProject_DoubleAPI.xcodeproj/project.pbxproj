@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2677A7B12AB9A43A00DE4DBD /* TMDBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2677A7B02AB9A43A00DE4DBD /* TMDBError.swift */; };
 		26AC35262A91FD2A00CAC1AA /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 26AC35252A91FD2A00CAC1AA /* Kingfisher */; };
 		26AC35292A91FD3300CAC1AA /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 26AC35282A91FD3300CAC1AA /* Alamofire */; };
 		26AC35342A91FF5900CAC1AA /* FooterVideoCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AC35322A91FF5900CAC1AA /* FooterVideoCollectionReusableView.swift */; };
@@ -105,6 +106,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2677A7B02AB9A43A00DE4DBD /* TMDBError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBError.swift; sourceTree = "<group>"; };
 		26AC35322A91FF5900CAC1AA /* FooterVideoCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterVideoCollectionReusableView.swift; sourceTree = "<group>"; };
 		26AC35332A91FF5900CAC1AA /* FooterVideoCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FooterVideoCollectionReusableView.xib; sourceTree = "<group>"; };
 		26AC35372A921EF100CAC1AA /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -278,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				26E4709A2A8F4E090076299E /* NetworkManager.swift */,
+				2677A7B02AB9A43A00DE4DBD /* TMDBError.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -601,6 +604,7 @@
 				26E6BA952A9CB37E0076AF65 /* AllpreView.swift in Sources */,
 				26E6BA7E2A9C71030076AF65 /* BaseViewController.swift in Sources */,
 				26EAC9452A9DF40D009D4A4A /* SettingView.swift in Sources */,
+				2677A7B12AB9A43A00DE4DBD /* TMDBError.swift in Sources */,
 				26E470C02A8FC8E60076299E /* MovieVideo.swift in Sources */,
 				26E470BD2A8F8AC60076299E /* MovieCastTableViewCell.swift in Sources */,
 				26E6BA8F2A9CB0BB0076AF65 /* CodeAllPreViewController.swift in Sources */,

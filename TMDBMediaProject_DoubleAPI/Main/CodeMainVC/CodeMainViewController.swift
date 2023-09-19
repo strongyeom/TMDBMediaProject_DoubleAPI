@@ -28,12 +28,15 @@ class CodeMainViewController: BaseViewController {
         
         
         NetworkManager.shared.callRequest(page: page) { response in
-            guard let response else { return }
             
-            self.movieList.results.append(contentsOf: response.results)
-            
-            self.mainVC.collectionView.reloadData()
-            
+            switch response {
+            case .success(let success):
+                self.movieList.results.append(contentsOf: success.results)
+                self.mainVC.collectionView.reloadData()
+            case .failure(let failure):
+                print(failure.description)
+            }
+           
         }
     }
     

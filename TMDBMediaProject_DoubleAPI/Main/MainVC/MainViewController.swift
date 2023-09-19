@@ -24,8 +24,13 @@ class MainViewController: UIViewController {
     
     func setupNetwork(page: Int) {
         NetworkManager.shared.callRequest(page: page) { response in
-            guard let response else { return }
-            self.movieList.results.append(contentsOf: response.results)
+            switch response {
+            case .success(let success):
+                self.movieList.results.append(contentsOf: success.results)
+            case .failure(let failure):
+                print(failure.description)
+            }
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 self.tmdbCollectionView.reloadData()
             }
