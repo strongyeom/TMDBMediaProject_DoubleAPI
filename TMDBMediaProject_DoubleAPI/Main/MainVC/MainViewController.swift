@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SeSaCUIFramework
 
 class MainViewController: UIViewController {
     
@@ -17,29 +18,52 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UserDefaults.standard.set(true, forKey: "isLanuched")
-        configureSetting()
+          configureSetting()
+        tmdbCollectionView.delegate = self
+        tmdbCollectionView.dataSource = self
         settingCollectionViewLayout()
         setupNetwork(page: page)
     }
     
+    
+    
+    func configureSetting() {
+     
+      //  tmdbCollectionView.prefetchDataSource = self
+        
+        let nib = UINib(nibName: MovieCollectionViewCell.identifier, bundle: nil)
+        tmdbCollectionView.register(nib, forCellWithReuseIdentifier: MovieCollectionViewCell.identifier)
+        
+    }
+    
+    func settingCollectionViewLayout() {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        let spacing: CGFloat = 5
+        let width = UIScreen.main.bounds.width - (spacing * 4)
+        layout.itemSize = CGSize(width: width / 3, height: width / 2.5)
+        layout.minimumLineSpacing = spacing
+        layout.minimumInteritemSpacing = spacing
+        layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
+        tmdbCollectionView.collectionViewLayout = layout
+    }
+    
     func setupNetwork(page: Int) {
-        NetworkManager.shared.callRequest(page: page) { response in
+
+        Network.shared.reqeust(type: Movie.self, api: .all(page: page)) { response in
             switch response {
             case .success(let success):
+              //  print(success)
                 self.movieList.results.append(contentsOf: success.results)
+                print(self.movieList.results)
+                self.tmdbCollectionView.reloadData()
             case .failure(let failure):
                 print(failure.description)
             }
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                self.tmdbCollectionView.reloadData()
-            }
-           
+  
         }
     }
-    
 }
-
 extension MainViewController: UICollectionViewDelegate {
     
 }
@@ -80,17 +104,7 @@ extension MainViewController: UICollectionViewDataSource {
         cell.confiure(item: item)
         return cell
     }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        if kind == UICollectionView.elementKindSectionHeader {
-            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: UICollectionViewCell.identifier, for: indexPath) as? HeaderCollectionReusableView else { return UICollectionReusableView() }
-            header.configure()
-            return header
-        } else {
-            return UICollectionReusableView()
-        }
-    }
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         
@@ -99,34 +113,4 @@ extension MainViewController: UICollectionViewDataSource {
         vc.detailMovie = movie
         navigationController?.pushViewController(vc, animated: true)
     }
-}
-
-extension MainViewController {
-
-    func configureSetting() {
-        tmdbCollectionView.delegate = self
-        tmdbCollectionView.dataSource = self
-        tmdbCollectionView.prefetchDataSource = self
-        
-        let nib = UINib(nibName: MovieCollectionViewCell.identifier, bundle: nil)
-        tmdbCollectionView.register(nib, forCellWithReuseIdentifier: MovieCollectionViewCell.identifier)
-
-        let headerNib = UINib(nibName: UICollectionViewCell.identifier, bundle: nil)
-        tmdbCollectionView.register(headerNib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: UICollectionViewCell.identifier)
-    }
-    
-    func settingCollectionViewLayout() {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        let spacing: CGFloat = 5
-        let width = UIScreen.main.bounds.width - (spacing * 4)
-        layout.itemSize = CGSize(width: width / 3, height: width / 2.5)
-        layout.minimumLineSpacing = spacing
-        layout.minimumInteritemSpacing = spacing
-        layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
-        layout.headerReferenceSize = CGSize(width: UIScreen.main.bounds.width, height: 40)
-        tmdbCollectionView.collectionViewLayout = layout
-    }
-
-
 }

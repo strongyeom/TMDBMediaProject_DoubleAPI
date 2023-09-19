@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         
         // OnBoarding 실행을 위해 테스트 false ㄷ
-       // UserDefaults.standard.set(false, forKey: "isLanuched")
+     //   UserDefaults.standard.set(false, forKey: "isLanuched")
         
         
         let isLanuched = UserDefaults.standard.bool(forKey: "isLanuched")
@@ -31,7 +31,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
             //let vc = CodeMainViewController()
-            let vc = TabBarController()
+            let vc = MainViewController()
             
             // 네비게이션 타이틀을 사용하려면 UINavigationController를 사용해야한다.
             

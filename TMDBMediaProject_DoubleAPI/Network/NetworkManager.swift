@@ -15,51 +15,12 @@ import Alamofire
  ]
  */
 
-enum TMDBAPI {
-    case all // https://api.themoviedb.org/3/trending/movie/week?language=ko-KR
-    case cast(id: Int) // https://api.themoviedb.org/3/movie/(id)/credits?language=ko-KR
-    case video(id: Int) // https://api.themoviedb.org/3/movie/(id)/videos?language=ko-KR
-    
-    var baseURL: String {
-        
-        switch self {
-        case .all:
-            return "https://api.themoviedb.org/3/"
-        case .cast, .video:
-            return "https://api.themoviedb.org/3/movie/"
-        }
-        
-        
-    }
 
-    var query: [String: String] {
-        return ["language":"ko-KR"]
-    }
-    
-    var header: HTTPHeaders {
-        return ["Authorization": APIKey.tmdbAccessToken,
-                "accept": "application/json"]
-    }
-    
-    var endPoint: URL {
-        switch self {
-        case .all:
-            return URL(string: baseURL + "trending/movie/week")!
-        case .cast(let id):
-            return URL(string: baseURL + "\(id)/credits")!
-        case .video(let id):
-            return URL(string: baseURL + "\(id)/videos")!
-        }
-    }
-    
-    
-}
 
 class NetworkManager {
     static let shared = NetworkManager()
     
     private init() { }
-    
     
     
     func callRequstUnsplash(searchText: String, page: Int, completionHandler: @escaping (Unsplash?) -> Void) {
@@ -95,7 +56,7 @@ class NetworkManager {
 //            "accept": "application/json"
 //        ]
 //
-        let api = TMDBAPI.all
+        let api = TMDBAPI.all(page: page)
         
         AF.request(api.endPoint, headers: api.header).validate(statusCode: 200...500)
             .responseDecodable(of: Movie.self) { response in

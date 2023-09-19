@@ -26,9 +26,19 @@ class CodeMainViewController: BaseViewController {
     
     func setupNetwork(page: Int) {
         
+//
+//        NetworkManager.shared.callRequest(page: page) { response in
+//
+//            switch response {
+//            case .success(let success):
+//                self.movieList.results.append(contentsOf: success.results)
+//                self.mainVC.collectionView.reloadData()
+//            case .failure(let failure):
+//                print(failure.description)
+//            }
+//        }
         
-        NetworkManager.shared.callRequest(page: page) { response in
-            
+        Network.shared.reqeust(type: Movie.self, api: .all(page: page)) { response in
             switch response {
             case .success(let success):
                 self.movieList.results.append(contentsOf: success.results)
@@ -36,8 +46,8 @@ class CodeMainViewController: BaseViewController {
             case .failure(let failure):
                 print(failure.description)
             }
-           
         }
+        
     }
     
     override func configureView() {
@@ -62,7 +72,7 @@ class CodeMainViewController: BaseViewController {
     func settup() {
         mainVC.collectionView.dataSource = self
         mainVC.collectionView.delegate = self
-        //mainVC.collectionView.prefetchDataSource = self
+        mainVC.collectionView.prefetchDataSource = self
     }
     
 }

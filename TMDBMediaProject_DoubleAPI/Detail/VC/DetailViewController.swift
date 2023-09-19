@@ -29,6 +29,7 @@ class DetailViewController: UIViewController {
     @IBOutlet var videoCollectionView: UICollectionView!
     
     
+    let group = DispatchGroup()
     
     var numberOfLines: Int = 1
     let thumbnailUrl = "https://img.youtube.com/vi/"
@@ -54,15 +55,43 @@ class DetailViewController: UIViewController {
     func setupNetworkCast() {
         guard let detailMovie else { return }
         
-        NetworkManager.shared.callRequestCast(id: detailMovie.id) { castResponse, videoResponse in
-            self.detailMovieCast = castResponse
-                     self.detailMovieVideo = videoResponse
-                     print("detailMovieCast",self.detailMovieCast!)
-                     self.castTableView.reloadData()
-                     self.videoCollectionView.reloadData()
-        } failure: {
-            print("데이터 통신 받아오지 못했습니다.")
+//        NetworkManager.shared.callRequestCast(id: detailMovie.id) { castResponse, videoResponse in
+//            self.detailMovieCast = castResponse
+//                     self.detailMovieVideo = videoResponse
+//                     print("detailMovieCast",self.detailMovieCast!)
+//                     self.castTableView.reloadData()
+//                     self.videoCollectionView.reloadData()
+//        } failure: {
+//            print("데이터 통신 받아오지 못했습니다.")
+//        }
+        
+        group.enter()
+        Network.shared.reqeust(type: MovieCast.self, api: .cast(id: detailMovie.id)) { response in
+            switch response {
+            case .success(let success):
+                self.detailMovieCast = success
+            case .failure(let failure):
+                print(failure.description)
+            }
+            self.group.leave()
         }
+        
+        group.enter()
+        Network.shared.reqeust(type: MovieVideo.self, api: .video(id: detailMovie.id)) { response in
+            switch response {
+            case .success(let success):
+                self.detailMovieVideo = success
+            case .failure(let failure):
+                print(failure.description)
+            }
+            self.group.leave()
+        }
+        
+        group.notify(queue: .main) {
+            self.castTableView.reloadData()
+            self.videoCollectionView.reloadData()
+        }
+        
     }
     
     
@@ -193,16 +222,16 @@ extension DetailViewController : UICollectionViewDataSource {
         vc.imageKey = selectedBtnKey
         present(vc, animated: true)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        if kind == UICollectionView.elementKindSectionFooter {
-            guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: FooterVideoCollectionReusableView.identifier, for: indexPath) as? FooterVideoCollectionReusableView else { return UICollectionReusableView() }
-            footer.addPreViewBtn.addTarget(self, action: #selector(addpreviewBtnClicked(_:)), for: .touchUpInside)
-            return footer
-        } else {
-            return UICollectionReusableView()
-        }
-    }
+//
+//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+//        if kind == UICollectionView.elementKindSectionFooter {
+//            guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: FooterVideoCollectionReusableView.identifier, for: indexPath) as? FooterVideoCollectionReusableView else { return UICollectionReusableView() }
+//            footer.addPreViewBtn.addTarget(self, action: #selector(addpreviewBtnClicked(_:)), for: .touchUpInside)
+//            return footer
+//        } else {
+//            return UICollectionReusableView()
+//        }
+//    }
     
     @objc func addpreviewBtnClicked(_ sender: UIButton) {
         print("예고편 더보기 버튼이 눌림")
@@ -260,8 +289,8 @@ extension DetailViewController {
         
         videoCollectionView.isPagingEnabled = false
         
-        let headernib = UINib(nibName: FooterVideoCollectionReusableView.identifier, bundle: nil)
-        videoCollectionView.register(headernib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: FooterVideoCollectionReusableView.identifier)
+//        let headernib = UINib(nibName: FooterVideoCollectionReusableView.identifier, bundle: nil)
+//        videoCollectionView.register(headernib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: FooterVideoCollectionReusableView.identifier)
         
     }
     
